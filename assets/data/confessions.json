@@ -1,0 +1,12 @@
+[
+  { "quote": "Net-30 on paper. Net-120 in practice. Every single invoice.",                  "attrib": "Packaging supplier · Tuas",      "trait": "chronic late payment" },
+  { "quote": "Signed off the job, then 'disputed' it the day payment was due.",              "attrib": "Fit-out contractor · Ubi",       "trait": "disputed-invoice stalling" },
+  { "quote": "Owed three of us. Closed the company. Reopened down the road as a new UEN.",   "attrib": "Logistics vendor · Jurong",      "trait": "phoenix company" },
+  { "quote": "The letter of demand arrived the week the invoice came due. Funny, that.",     "attrib": "IT services · Paya Lebar",       "trait": "vexatious legal threat" },
+  { "quote": "Took the 50% deposit, ghosted on delivery, blocked my number.",                "attrib": "Print broker · Kallang",         "trait": "deposit, no delivery" },
+  { "quote": "Quoted low to win the tender, then 'unforeseen costs' doubled it.",            "attrib": "M&E sub-contractor · Woodlands", "trait": "bait-and-switch" },
+  { "quote": "Paid me when his client paid him. That wasn't our contract.",                  "attrib": "Freight forwarder · Changi",     "trait": "pay-when-paid offloading" },
+  { "quote": "Hired my designer the week after she pitched them. Same deck.",                "attrib": "Creative studio · Tiong Bahru",  "trait": "talent + IP poaching" },
+  { "quote": "Three strike-offs in five years and he's still tendering for jobs.",           "attrib": "Renovation trade · Sin Ming",    "trait": "serial struck-off director" },
+  { "quote": "Two suppliers already flagged him. He's opening an account with a third.",     "attrib": "Wholesale credit desk · CBD",    "trait": "rolling bad counterparty" }
+]

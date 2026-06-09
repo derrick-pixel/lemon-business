@@ -1,0 +1,9 @@
+# Lemon Business — public-site robots policy
+# Belt-and-braces alongside per-page <meta name="robots"> noindex tags.
+# Pre-launch concept-stage venture; do not index any path until legal sign-off.
+
+User-agent: *
+Disallow: /docs/
+Disallow: /scripts/
+
+Sitemap: https://derrick-pixel.github.io/lemon-business/sitemap.xml

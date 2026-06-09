@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — Lemon Business</title>
+<meta name="description" content="The Lemon Score engine: severity-weighted points, a quadratic corroboration multiplier, automatic decay, and a 24–72 hour contest window on every upload.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="How the Lemon Score works">
+<meta property="og:description" content="Severity in, expiry out. A demerit engine for bad counterparties.">
+<meta property="og:url" content="https://derrick-pixel.github.io/lemon-business/how-it-works.html">
+<meta property="og:image" content="https://derrick-pixel.github.io/lemon-business/assets/img/og-image.png">
+<meta property="og:image:secure_url" content="https://derrick-pixel.github.io/lemon-business/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Lemon Business — the counterparty lemon platform for Singapore's SME trade market.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lemon Business">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How the Lemon Score works">
+<meta name="twitter:description" content="Severity in, expiry out. A demerit engine for bad counterparties.">
+<meta name="twitter:image" content="https://derrick-pixel.github.io/lemon-business/assets/img/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/lemon.css?v=1">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="index.html">
+    <svg class="nav__mark" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="11" fill="#e3a400" stroke="#211d12" stroke-width="2"/>
+      <g stroke="#211d12" stroke-width="1.4" stroke-linecap="round">
+        <line x1="16" y1="16" x2="16" y2="6.5"/><line x1="16" y1="16" x2="24.2" y2="11.2"/>
+        <line x1="16" y1="16" x2="24.2" y2="20.8"/><line x1="16" y1="16" x2="16" y2="25.5"/>
+        <line x1="16" y1="16" x2="7.8" y2="20.8"/><line x1="16" y1="16" x2="7.8" y2="11.2"/>
+      </g>
+      <circle cx="16" cy="16" r="2.6" fill="#211d12"/>
+    </svg>
+    <span>Lemon&nbsp;Business</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="how-it-works.html" aria-current="page">How it works</a>
+    <a href="for-businesses.html">For businesses</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="trust.html">The Squeeze</a>
+  </nav>
+  <div class="nav__right">
+    <a class="btn btn--lemon" href="index.html#access">Request access</a>
+    <button class="nav__burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu">
+  <a href="how-it-works.html">How it works</a>
+  <a href="for-businesses.html">For businesses</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="trust.html">The Squeeze</a>
+  <a class="btn btn--lemon" href="index.html#access">Request access</a>
+</div>
+
+<!-- ===== HEAD ===== -->
+<section class="hero hero--kampong" style="padding-bottom:clamp(2.5rem,5vw,4rem);">
+  <div class="wrap">
+    <span class="kicker reveal">The mechanism</span>
+    <h1 class="display reveal" data-d="1" style="margin:1.4rem 0 1.4rem;max-width:16ch;">Severity in. <em>Expiry</em> out.</h1>
+    <p class="lede reveal" data-d="2" style="max-width:42rem;">The Lemon Score is a demerit engine. Bad behaviour adds points by how bad it was. Good behaviour — and plain old time — takes them back off. Here's exactly how the number moves.</p>
+    <div class="hero__cta reveal" data-d="3" style="margin-top:1.7rem;">
+      <a class="btn btn--lemon" href="#calculator">Try the live calculator <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALCULATOR ===== -->
+<section class="section band" id="calculator">
+  <div class="wrap">
+    <div class="head reveal head--mascot">
+      <img class="calc-mascot illo--pop" src="assets/img/lemon-man.webp" alt="Lemon Business">
+      <div>
+        <span class="kicker">Try it — no sign-up</span>
+        <h2>Build a Lemon Score.</h2>
+        <p class="lede">You're the buyer. Dial in what a counterparty has on record — and how many separate businesses logged each thing. Two suppliers flagging the same trait is where it turns sour, fast.</p>
+      </div>
+    </div>
+    <div class="calc reveal" data-d="1">
+      <div class="calc__panel">
+        <div class="calc__legend"><span>Incident on record</span><span>Businesses logged</span><span>Points</span></div>
+        <div id="calc-incidents"></div>
+        <div class="calc__ripen">
+          <h4>🍑 Ripening — earn the score back down</h4>
+          <div class="calc__legend"><span>Positive signal</span><span>Count</span><span>Offset</span></div>
+          <div id="calc-ripen"></div>
+        </div>
+      </div>
+      <aside class="calc__result">
+        <div class="calc__stamp">LEMON SCORE · LIVE</div>
+        <svg class="calc-face" id="calc-face" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" fill="#fffdf2" stroke="#211d12" stroke-width="2"/>
+          <ellipse class="cf-body" cx="16" cy="17" rx="9" ry="9.3" fill="#e6855c" stroke="#211d12" stroke-width="2"/>
+          <path d="M16 6.6 q2.6 -1.9 4.2 .3 q-1.6 2.6 -4.2 1" fill="#6f9457" stroke="#211d12" stroke-width="1.4" stroke-linejoin="round"/>
+          <circle cx="12.8" cy="16" r="1.7" fill="#211d12"/>
+          <circle cx="19.2" cy="16" r="1.7" fill="#211d12"/>
+          <path class="cf-mouth" d="M12.5 20 Q16 23.6 19.5 20" fill="none" stroke="#211d12" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="calc__score"><span id="calc-score">0</span><small> / 1000</small></div>
+        <div class="calc__verdict is-peach" id="calc-verdict">Peach — safe to deal with</div>
+        <div class="calc__meter"><i></i><i></i><i></i><i></i><span class="calc__pin" id="calc-pin" style="left:0%"></span></div>
+        <div class="calc__break">
+          <span>Raw incident points<b id="calc-raw">0</b></span>
+          <span>Ripening offsets<b id="calc-ripen-total">−0</b></span>
+          <span class="tot">Lemon Score<b id="calc-final">0</b></span>
+        </div>
+        <button class="btn btn--ghost calc__reset" id="calc-reset" type="button">Reset all</button>
+      </aside>
+    </div>
+    <p class="note reveal" data-d="1" style="margin-top:1.5rem;">The maths, in the open: each incident scores <strong>base × m(n)</strong>, where <strong>n</strong> is the number of independent businesses who logged it and the corroboration multiplier is <strong>m(n) = 0.25n² + 0.75n</strong> — one report counts ×1, two ×2.5, three ×4.5. Points sum, ripening offsets subtract. The reference band is 0–1000, but a peachy counterparty can run <strong>negative</strong> (a 5-star partner) and a thoroughly rotten one can blow <strong>past 1000</strong> — both are deliberate, for illustration.</p>
+  </div>
+</section>
+
+<!-- ===== 01 INCIDENTS ===== -->
+<section class="section" id="engine">
+  <div class="wrap">
+    <div class="head reveal head--mascot">
+      <img class="calc-mascot illo--pop" src="assets/img/lemon-clipboard.webp" alt="Lemon Business with a clipboard, filing a record">
+      <div>
+        <span class="kicker">01 — Points go up</span>
+        <h2>Every lemon trait has a price.</h2>
+        <p class="lede">Uploads aren't free text and they aren't vibes. Each one maps to a fixed incident type with a fixed point value — heavier for the things that actually torch a working relationship, or your cashflow.</p>
+      </div>
+    </div>
+    <div class="reveal" data-d="1" style="background:var(--card);border:2.5px solid var(--ink);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-pop);">
+      <table class="dtable">
+        <thead><tr><th>Incident type</th><th>Why it stings</th><th class="pts">Lemon points</th></tr></thead>
+        <tbody>
+          <tr><td>Chronic late payment (beyond terms)</td><td>Pays well past net terms</td><td class="pts up">+50</td></tr>
+          <tr><td>Disputed-invoice stalling tactic</td><td>Manufactured dispute to delay</td><td class="pts up">+90</td></tr>
+          <tr><td>Unilateral payment-term stretching</td><td>Imposes longer terms after the deal</td><td class="pts up">+110</td></tr>
+          <tr><td>Scope shortfall — billed in full</td><td>Delivered less than contracted</td><td class="pts up">+140</td></tr>
+          <tr><td>Vexatious legal threat to avoid paying</td><td>Letter of demand as a stall</td><td class="pts up">+160</td></tr>
+          <tr><td>Reneged on an agreed deal</td><td>Backed out after you committed</td><td class="pts up">+180</td></tr>
+          <tr><td>Substandard deliverable (with finding)</td><td>Materially below spec</td><td class="pts up">+200</td></tr>
+          <tr><td>Bad-debt default (invoice written off)</td><td>Never paid in full</td><td class="pts up">+320</td></tr>
+          <tr><td>NDA / IP breach (with finding)</td><td>Took what was not theirs</td><td class="pts up">+400</td></tr>
+          <tr><td>Phoenix company (dissolved to dodge debt)</td><td>Folded the debt, reopened</td><td class="pts up">+480</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note reveal" data-d="1" style="margin-top:1.2rem;">A starter set — the <a href="simulator.html" style="color:var(--sour);font-weight:700;">full incident simulator</a> covers the whole catalogue, grouped by category. A comprehensive, evidence-backed upload (3 tokens) lands the heaviest weighting.</p>
+  </div>
+</section>
+
+<!-- ===== 02 QUADRATIC ===== -->
+<section class="section band">
+  <div class="wrap">
+    <div class="grid grid-2" style="gap:clamp(2rem,5vw,4.5rem); align-items:center;">
+      <div class="reveal">
+        <span class="kicker">02 — The corroboration multiplier</span>
+        <h2 style="margin:1rem 0 1.2rem;">One supplier is a complaint. Two is a <em>pattern.</em></h2>
+        <p class="lede" style="margin-bottom:1.1rem;">When a second — or third — business logs the same trait on the same company, the points don't just add. They multiply, on a quadratic curve. A repeated lemon gets sour fast.</p>
+        <p class="note">A corroborated lemon is a real lemon. Independent businesses seeing the same behaviour is the strongest signal the platform has — so the score treats it that way.</p>
+      </div>
+      <div class="reveal" data-d="1">
+        <div class="card" style="padding:1.8rem;">
+          <div style="font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1.1rem;">Substandard deliverable · base +200</div>
+          <div style="display:flex;flex-direction:column;gap:.9rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px dashed var(--line);padding-bottom:.7rem;"><span>1 business reports</span><span style="font-family:var(--serif);font-size:1.5rem;font-weight:700;">200</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px dashed var(--line);padding-bottom:.7rem;"><span>2 businesses report</span><span style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--lemon);">~500</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span>3 businesses report</span><span style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--sour);">~900</span></div>
+          </div>
+          <p style="font-family:var(--mono);font-size:.74rem;color:var(--ink-3);margin-top:1.1rem;">Illustrative. Pucker-up territory after three.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 DECAY ===== -->
+<section class="section band-ink">
+  <div class="wrap">
+    <div class="grid grid-2" style="gap:clamp(2rem,5vw,4.5rem); align-items:center;">
+      <div class="reveal">
+        <span class="kicker kicker--plain">03 — Points come back down</span>
+        <h2 style="margin:1rem 0 1.2rem;">A lemon can ripen into a peach.</h2>
+        <p class="lede">The score isn't a life sentence. Stay clean and it decays on its own. Put in real effort and it drops faster.</p>
+        <ul style="display:flex;flex-direction:column;gap:.8rem;margin-top:1.6rem;">
+          <li style="padding-left:1.7rem;position:relative;color:#cbc3aa;"><span style="position:absolute;left:0;">🍑</span> <strong style="color:var(--paper);">6–12 clean months</strong>, no new uploads — the score steps down a band.</li>
+          <li style="padding-left:1.7rem;position:relative;color:#cbc3aa;"><span style="position:absolute;left:0;">📜</span> <strong style="color:var(--paper);">2 verified trade references</strong> from recent counterparties — points off.</li>
+          <li style="padding-left:1.7rem;position:relative;color:#cbc3aa;"><span style="position:absolute;left:0;">🎓</span> <strong style="color:var(--paper);">Industry accreditation (bizSAFE / ISO)</strong> — a credible operator invests in standards.</li>
+          <li style="padding-left:1.7rem;position:relative;color:#cbc3aa;"><span style="position:absolute;left:0;">✍️</span> <strong style="color:var(--paper);">A quality write-in</strong> — engaging with the platform is itself a positive signal.</li>
+          <li style="padding-left:1.7rem;position:relative;color:#cbc3aa;"><span style="position:absolute;left:0;">🤝</span> <strong style="color:var(--paper);">Overdue invoices settled in full</strong> — clearing what you owe is the most direct turnaround signal there is.</li>
+          <li style="padding-left:1.7rem;position:relative;color:#cbc3aa;"><span style="position:absolute;left:0;">🎗️</span> <strong style="color:var(--paper);">A tax-deductible donation</strong> to an IPC-registered charity — real money behind the turnaround.</li>
+        </ul>
+        <a class="btn btn--peach" href="for-businesses.html" style="margin-top:1.7rem;">How businesses un-lemon <span class="arrow">→</span></a>
+      </div>
+      <div class="reveal" data-d="1">
+        <div class="gauge" data-gauge="180">
+          <div class="gauge__card" data-stamp="RIPENED">
+            <svg class="gauge__svg" viewBox="0 0 220 132" aria-hidden="true">
+              <path d="M20 122 A90 90 0 0 1 200 122" fill="none" stroke="var(--line)" stroke-width="12" stroke-linecap="round"/>
+              <path class="gauge__arc" d="M20 122 A90 90 0 0 1 200 122" fill="none" stroke-width="12" stroke-linecap="round"/>
+            </svg>
+            <div class="gauge__num"><span data-gauge-num>0</span><small> / 1000</small></div>
+            <div class="gauge__verdict is-peach">Peach — cleared</div>
+            <div class="gauge__rows">
+              <div class="gauge__row"><span>Clean months</span><span class="tag tag--peach">14 running</span></div>
+              <div class="gauge__row"><span>Trade references</span><span class="tag tag--peach">3 verified</span></div>
+              <div class="gauge__row"><span>Accreditations</span><span class="tag tag--peach">2 held</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="note" data-d="1" style="margin-top:1rem;border-color:var(--peach);">Same business, 18 months later. Score 720 → 180. That's the platform working.</p>
+      </div>
+    </div>
+    <div class="reveal" data-d="2" style="margin-top:clamp(2rem,4.5vw,3.4rem);">
+      <img loading="lazy" class="illo illo-strip illo-strip--ripen" src="assets/img/ripening.webp" alt="A sour lemon ripening into a sweet peach">
+      <p class="illo-cap" style="color:#8c856f;">Sour to peach — the whole point of a score that decays.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 CONTEST WINDOW ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="head reveal head--mascot">
+      <img loading="lazy" class="calc-mascot illo--pop" src="assets/img/lemon-says.webp" alt="A lemon putting its side of the story">
+      <div>
+        <span class="kicker">04 — Every upload is contestable</span>
+        <h2>Nothing goes live in the dark.</h2>
+        <p class="lede">Frivolous uploads would poison the well. So every record runs a contest window before it counts — and the business pays to file it, which keeps the trigger-happy ones honest.</p>
+      </div>
+    </div>
+    <div class="steps reveal" data-d="1">
+      <div class="step">
+        <div class="step__n"></div>
+        <div>
+          <h3>The business files the upload</h3>
+          <p>A structured incident report, evidence attached, against a paid token. Money on the line means no idle grudges. The record is queued, not yet visible.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n"></div>
+        <div>
+          <h3>The counterparty is pinged — within 24 hours</h3>
+          <p>A verified alert goes to the company's registered contact. They have the contest window to accept it, or push back with their side of the story.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n"></div>
+        <div>
+          <h3>Uncontested? It goes live in 24–72 hours</h3>
+          <p>No response, no dispute — the record publishes and the points land on the Lemon Score.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n"></div>
+        <div>
+          <h3>Contested? It goes to mediation</h3>
+          <p>The counterparty can reach the other business to resolve it. A quality, corroborated rebuttal mitigates the score. A flimsy one doesn't.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section band-lemon cta-band">
+  <div class="wrap" style="max-width:46rem;">
+    <h2 class="reveal">Run the Lemon Score against your own ledger.</h2>
+    <p class="lede reveal" data-d="1" style="color:var(--ink-2);">Pilot operators get a walkthrough of the engine, the incident catalogue and the contest flow.</p>
+    <div class="reveal" data-d="2" style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn--primary" href="index.html#access">Request pilot access <span class="arrow">→</span></a>
+      <a class="btn btn--ghost" href="trust.html">Read The Squeeze</a>
+    </div>
+  </div>
+</section>
+
+<div class="grove-band" aria-hidden="true"></div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <div class="foot__brand">
+          <svg class="nav__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="11" fill="#e3a400" stroke="#211d12" stroke-width="2"/>
+            <g stroke="#211d12" stroke-width="1.4" stroke-linecap="round">
+              <line x1="16" y1="16" x2="16" y2="6.5"/><line x1="16" y1="16" x2="24.2" y2="11.2"/>
+              <line x1="16" y1="16" x2="24.2" y2="20.8"/><line x1="16" y1="16" x2="16" y2="25.5"/>
+              <line x1="16" y1="16" x2="7.8" y2="20.8"/><line x1="16" y1="16" x2="7.8" y2="11.2"/>
+            </g>
+            <circle cx="16" cy="16" r="2.6" fill="#211d12"/>
+          </svg>
+          <span>Lemon&nbsp;Business</span>
+        </div>
+        <p class="foot__tag">The counterparty lemon platform. Helping Singapore's SMEs tell a lemon from a peach — before they sign.</p>
+      </div>
+      <div class="foot__col">
+        <h5>Platform</h5>
+        <a href="how-it-works.html">How it works</a>
+        <a href="for-businesses.html">For businesses</a>
+        <a href="pricing.html">Pricing</a>
+      </div>
+      <div class="foot__col">
+        <h5>Lemon stuff</h5>
+        <a href="trust.html">The Squeeze</a>
+        <a href="how-it-works.html#engine">The Lemon Score</a>
+        <a href="for-businesses.html">Un-lemon yourself</a>
+      </div>
+      <div class="foot__col">
+        <h5>Access</h5>
+        <a href="index.html#access">Request pilot access</a>
+        <a href="pricing.html">Tokens &amp; plans</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© <span data-year>2026</span> Lemon&nbsp;Business · Counterparty Lemon Platform</span>
+      <span class="mono">Concept-stage venture — not a live service, offer or regulatory filing.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/lemon.js?v=1"></script>
+</body>
+</html>

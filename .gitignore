@@ -1,0 +1,18 @@
+# Confidential source material — kept local, never pushed.
+_source/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+.gstack/
+
+# Raw Stitch illustration exports — processed copies live in assets/img/
+stitch_*_illustration_set*/
+
+# Standardized hygiene
+node_modules/
+.next/
+.env
