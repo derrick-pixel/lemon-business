@@ -1,0 +1,4 @@
+# Supabase ANON (publishable) key for the admin auth-gate. Anon keys are designed
+# to be client-side public and are protected by Row-Level Security — a known
+# false positive, not a leak. Same allowlist the Lemon Man repo carries.
+admin/assets/kit/js/auth-gate.js:jwt:31

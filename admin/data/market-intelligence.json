@@ -1,0 +1,333 @@
+{
+  "meta": {
+    "project_name": "Lemon Business — Intel Cabinet 2026",
+    "brand_tokens": {"primary":"#211d12","secondary":"#e3a400","accent":"#a86a00","neutral_dark":"#211d12","neutral_light":"#f6efda","font_display":"'Fraunces', Georgia, serif","font_body":"'Hanken Grotesk', system-ui, sans-serif"},
+    "research_date": "2026-06-09", "sample_data": false
+  },
+  "market_size": {
+    "tam_sgd": 260000000,
+    "sam_sgd": 80000000,
+    "som_sgd": 3600000,
+    "currency_label": "SGD",
+    "derivation_flow": {
+      "tam": {
+        "stage_label": "STAGE 1 · TAM",
+        "subtitle": "Total SG annual spend on counterparty credit-risk and conduct intelligence — the whole 'who-can-I-trust-to-pay' budget the product competes for",
+        "result_label": "S$260M",
+        "total_equation": "S$120M credit-intel + S$60M debt-collection + S$50M trade-credit-insurance + S$30M KYB/onboarding = S$260M / yr",
+        "stacks": [
+          {
+            "name": "B2B credit-report & risk-intel spend",
+            "source": "ACRA active-entity counts (614k entities, 456k companies, >300k SMEs, Jul 2025) + commercial-bureau (SCCB / Experian-DP / Credit Bureau Asia) report pricing",
+            "inputs": [
+              {"label": "SG SMEs that extend trade credit", "value": "~300,000"},
+              {"label": "Annual commercial credit-report / monitoring spend per active buyer", "value": "~S$400"}
+            ],
+            "equation": "300,000 SMEs × S$400/yr blended bureau + report spend = S$120M",
+            "result_label": "S$120M"
+          },
+          {
+            "name": "Debt-collection & late-payment chasing spend",
+            "source": "InvoiceInterchange (2025): ~52% of SG SMEs hit by overdue payment, ~S$4,000/yr spent chasing late payers; collection-agency / outsourced recovery share",
+            "inputs": [
+              {"label": "SG SMEs materially exposed to overdue B2B payment", "value": "~150,000"},
+              {"label": "Portion of chasing cost that is cash-out (agency fees, recovery, legal) per exposed SME", "value": "~S$400"}
+            ],
+            "equation": "150,000 exposed SMEs × ~S$400 outsourced-recovery share = S$60M (subset of the ~S$4,000 total internal+external chasing burden)",
+            "result_label": "S$60M"
+          },
+          {
+            "name": "Trade-credit-insurance premiums (SG book)",
+            "source": "Allied Market Research / Allianz Trade / Coface — APAC TCI ~US$3.2B (2021); SG share; Enterprise Singapore TCIS history; ~0.25% of insured receivables premium rule of thumb",
+            "inputs": [
+              {"label": "Estimated SG annual trade-credit-insurance premium pool", "value": "~S$50M"}
+            ],
+            "equation": "SG-attributed TCI premium pool ≈ S$50M",
+            "result_label": "S$50M"
+          },
+          {
+            "name": "KYB / vendor-onboarding / due-diligence spend",
+            "source": "ACRA BizFile+ profile pulls + KYB SaaS (Know Your Customer, Sumsub, QCC) onboarding/periodic-review spend by SG financial + regulated + B2B firms",
+            "inputs": [
+              {"label": "SG firms running formal KYB / vendor due-diligence", "value": "~60,000"},
+              {"label": "Annual KYB / profile-pull / periodic-review spend per firm", "value": "~S$500"}
+            ],
+            "equation": "60,000 firms × S$500/yr = S$30M",
+            "result_label": "S$30M"
+          }
+        ]
+      },
+      "sam": {
+        "stage_label": "STAGE 2 · SAM",
+        "subtitle": "SG SMEs that actually extend trade credit or onboard vendors AND would pay for peer-conduct (not just financial) checks",
+        "result_label": "S$80M",
+        "total_equation": "~120,000 credit-extending / vendor-onboarding SMEs × ~S$650 blended annual willingness-to-pay = ~S$78M ≈ S$80M",
+        "filters": [
+          "Exclude micro sole-props with no recurring B2B credit exposure",
+          "Keep only firms transacting B2B on deferred terms (~54% of B2B sales are on credit — Atradius 2025)",
+          "Keep only firms whose pain is counterparty CONDUCT (payment behaviour, bad-faith disputes, phoenixing) not just financial-statement credit scores"
+        ],
+        "stacks": [
+          {
+            "name": "Credit-extending / vendor-onboarding SME base",
+            "source": "Atradius PPB Singapore 2025 (54% of B2B sales on credit; 46-day terms) applied to >300k SME base; deduplicated against firms with no recurring counterparty risk",
+            "inputs": [
+              {"label": "SG SMEs extending trade credit or onboarding paying vendors", "value": "~120,000"},
+              {"label": "Blended annual willingness-to-pay for peer-conduct checks (subscription + lookups)", "value": "~S$650"}
+            ],
+            "equation": "120,000 SMEs × S$650/yr = S$78M",
+            "result_label": "S$78M"
+          }
+        ]
+      },
+      "som": {
+        "stage_label": "STAGE 3 · SOM",
+        "subtitle": "Realistic 3-year obtainable revenue for a concept-stage SG entrant — early-adopter SMEs on subscriptions plus pay-as-you-go token lookups",
+        "result_label": "S$3.6M",
+        "total_equation": "(6,000 paying SMEs × ~S$540 blended ARPU) + token-lookup overage ≈ S$3.6M / yr by year 3",
+        "filters": [
+          "~5% of the ~120k SAM base reachable in 3 years given cold-start network effects and defamation/POHA chill",
+          "Conservative ARPU below SAM willingness to reflect freemium + token model and early-stage discounting"
+        ],
+        "stacks": [
+          {
+            "name": "Subscriptions + token lookups (year-3 run-rate)",
+            "source": "Bottom-up entrant model; benchmarked against SCCB / bureau per-search pricing and SaaS SME conversion norms",
+            "inputs": [
+              {"label": "Paying SG SMEs by year 3", "value": "~6,000"},
+              {"label": "Blended annual revenue per account (subscription + token lookups)", "value": "~S$540"},
+              {"label": "Pay-as-you-go token lookups (non-subscriber overage)", "value": "~S$0.4M"}
+            ],
+            "equation": "(6,000 × S$540) + S$0.4M token overage = S$3.24M + S$0.4M ≈ S$3.6M",
+            "result_label": "S$3.6M"
+          }
+        ]
+      }
+    },
+    "implications": [
+      {
+        "headline": "Rising bad-debt write-offs, not the late-payment rate, are the real wedge",
+        "body": "The headline late-payment rate actually IMPROVED — overdue invoices fell to ~35% of B2B sales in 2025 (Atradius) from ~54% in 2024. But bad-debt write-offs rose to ~6% of B2B invoices (7% in agri-food). 'Customers pay slower' is a softening story; 'uncollectible losses are climbing' is the durable one. Anchor the pitch on permanent loss avoidance, not on slow payment.",
+        "agent_targets": ["agent_3", "agent_8"]
+      },
+      {
+        "headline": "The chasing cost — ~S$4,000/SME/yr — is the budget we redirect",
+        "body": "InvoiceInterchange puts the annual late-payment chasing burden at almost S$4,000 per SME, with ~52% of SMEs exposed. Most of that is internal time, not cash-out — so the sell is 'screen before you extend credit and avoid the chase entirely.' Pre-deal conduct intelligence is cheaper than post-deal recovery, which frames pricing against a known pain.",
+        "agent_targets": ["agent_3", "agent_5"]
+      },
+      {
+        "headline": "Incumbents score financials; nobody scores conduct",
+        "body": "Experian-DP, SCCB and Credit Bureau Asia cover financial-statement and litigation/winding-up data on most SG companies. None capture behavioural signals — bad-faith disputes, legal-threat bullying, undelivery, phoenixing across UEN+director identity. That white space is the defensible primitive, but it is also a cold-start data problem: value is near-zero until peer contributions reach density.",
+        "agent_targets": ["agent_2", "agent_8"]
+      },
+      {
+        "headline": "SOM is gated by trust-and-chill, not by addressable demand",
+        "body": "SAM (~S$80M) is large relative to a S$3.6M 3-year SOM because the binding constraint is not willingness-to-pay — it is the cold-start network effect plus a real defamation/POHA chill on honest negative feedback. Singapore has no anti-SLAPP shield, so contributors fear suits. Reaching even 5% of SAM requires solving contribution incentives and legal safe-harbour design first.",
+        "agent_targets": ["agent_4", "agent_6"]
+      },
+      {
+        "headline": "Construction is the beachhead vertical",
+        "body": "Construction runs the highest trade-credit dependence (~55% of B2B sales on deferred terms) and already has a statutory payment-dispute culture via the Security of Payment Act and adjudication. It is the segment most primed to value a counterparty-conduct layer, and SOPA adjudication records are a public, structured behavioural signal to seed the database.",
+        "agent_targets": ["agent_3", "agent_2"]
+      }
+    ],
+    "methodology_appendix": "Sizing is bottom-up and deliberately conservative; treat all figures as order-of-magnitude, not survey-census precision. The denominator is ACRA's business registry: ~614,000 active entities as of July 2025, of which ~456,000 are companies, against a widely-cited SME population of >300,000 (99% of SG enterprises are SMEs per SingStat/DOS, defined as <S$100M turnover or <200 staff). TAM is the sum of four adjacent spend pools the product competes for. (1) Commercial credit-report and risk-monitoring spend: we apply a ~S$400/yr blended figure across ~300,000 credit-extending SMEs (S$120M). This is an estimate — per-search bureau pricing (SCCB, Experian-DP, Credit Bureau Asia) ranges widely and many SMEs spend nothing, while heavier users spend thousands; S$400 is a population-weighted midpoint, not an observed average. (2) Debt-collection / chasing spend: InvoiceInterchange (2025) reports ~S$4,000/yr per SME chasing late payers and ~52% of SMEs affected. Most of that S$4,000 is internal labour, not cash-out, so we model only the externalised/outsourced portion (~S$400 across ~150,000 exposed SMEs = S$60M) to avoid double-counting time the firm already pays for. (3) Trade-credit-insurance premiums: APAC TCI was ~US$3.2B in 2021 (Allied Market Research) growing ~11% CAGR; Singapore is a mature node (Allianz Trade, Coface, Atradius all active; Enterprise Singapore formerly co-funded premiums via TCIS). We attribute ~S$50M of SG premium, consistent with the ~0.25%-of-insured-receivables rule of thumb. (4) KYB/onboarding/due-diligence: ~60,000 regulated and B2B firms running formal vendor verification at ~S$500/yr (ACRA BizFile+ pulls plus KYB SaaS) = S$30M. TAM ≈ S$260M. SAM filters TAM to firms whose pain is counterparty CONDUCT, not just financial scores, and who actually extend credit or onboard vendors: ~120,000 SMEs (derived from the ~54% of B2B sales transacted on credit per Atradius PPB Singapore 2025) at a ~S$650 blended annual willingness-to-pay = ~S$78M, rounded to S$80M. SOM is a 3-year obtainable run-rate for a concept-stage entrant facing a cold-start: ~6,000 paying SMEs (~5% of SAM) at ~S$540 blended ARPU plus ~S$0.4M pay-as-you-go token-lookup overage ≈ S$3.6M. The 5% ceiling reflects two hard constraints absent from a pure demand model: the network-effect cold-start (the database has near-zero value until peer contributions reach density) and a documented chilling effect — Singapore's POHA falsehood/disabling-order regime plus the absence of any anti-SLAPP statute means contributors of honest negative feedback face real takedown and defamation-suit risk. Key honesty caveats: the Atradius figures are panel-survey data (a sample of firms self-reporting), NOT a census, so the 35%/6%/46-day/54% numbers carry sampling error; the S$4,000 and 52% figures come from a single lender's (InvoiceInterchange) commentary and should be read as indicative; and the per-firm spend multipliers in TAM are modelled midpoints, not measured. Where a 2024-to-2025 comparison is made, note the direction is counter-intuitive: late payment improved while bad debt worsened, and the product thesis rests on the latter.",
+    "sources": [
+      {"title": "Atradius — B2B payment practices trends in Singapore 2025", "url": "https://group.atradius.com/knowledge-and-research/reports/b2b-payment-practices-trends-singapore-2025"},
+      {"title": "Atradius — B2B payment practices trends, Singapore 2024", "url": "https://atradius.co.uk/knowledge-and-research/reports/b2b-payment-practices-trends-singapore-2024"},
+      {"title": "InvoiceInterchange — Singapore B2B Payment Practices 2025 (overdue average 35% of sales)", "url": "https://www.invoiceinterchange.com/singapore-b2b-payment-practices-2025-overdue-invoices-average-35-of-sales/"},
+      {"title": "InvoiceInterchange — How does overdue payment affect SMEs (~S$4,000/yr, 52% exposed)", "url": "https://www.invoiceinterchange.com/overdue-payment-affect-smes/"},
+      {"title": "ACRA — Business registry statistics / Statistical Highlights 2025", "url": "https://www.acra.gov.sg/training-and-resources/facts-and-figures/statistical-highlights-2025"},
+      {"title": "SingStat — Enterprise Landscape By SMEs And Non-SMEs (data.gov.sg)", "url": "https://data.gov.sg/datasets/d_f9c93c1ffcefe660272c101cd733711c/view"},
+      {"title": "Allied Market Research — Trade Credit Insurance Market", "url": "https://www.alliedmarketresearch.com/trade-credit-insurance-market-A08305"},
+      {"title": "Singapore Commercial Credit Bureau (SCCB)", "url": "https://sccb.com.sg/"},
+      {"title": "Experian Singapore — DP Information Group rebrand", "url": "https://www.experian.com.sg/insights/dp-information-group-dp-info-rebrands-to-experian-providing-customers-increased-access-to-experians-global-capabilities-and-services/"}
+    ]
+  },
+  "policies": [
+    {
+      "title": "Protection from Harassment Act 2014 (POHA) — falsehood, disabling & correction orders",
+      "body": "Since the 1 April 2020 amendments, POHA empowers courts to issue stop-publication, correction, targeted-correction and disabling orders against online false statements of fact, with standing extended to companies and other entities (not just individuals). A reviewed business that claims a posted statement is false can apply for a disabling order compelling an intermediary to take the content down — and these applications are heard swiftly. This is the single largest takedown and litigation risk for a peer-review platform.",
+      "sentiment": "against",
+      "effective_date": "2014-11-15",
+      "url": "https://www.allenandgledhill.com/sg/publication/articles/15215/protection-from-harassment-act-amended-to-tackle-spread-of-online-falsehoods-affecting-individuals-and-entities",
+      "data_as_of": "2026-06-09",
+      "implication_for_us": "Design for it: require evidence-backed, fact-anchored entries (invoices, judgments, SOPA adjudications), separate verifiable fact from opinion, build a fast notice-and-action takedown flow, and keep contributor audit trails. Treat a disabling order as a when-not-if and pre-build the compliance workflow."
+    },
+    {
+      "title": "No anti-SLAPP statute in Singapore + defamation exposure",
+      "body": "Singapore has no anti-SLAPP (Strategic Lawsuit Against Public Participation) shield, and defamation — both civil and the criminal offence under the Penal Code — remains a live threat for negative commentary about identifiable businesses or directors. A well-resourced counterparty can use the credible threat of a suit to chill honest reporting, the exact 'legal-threat bullying' behaviour the platform aims to surface.",
+      "sentiment": "against",
+      "effective_date": "1965-08-09",
+      "url": "https://singaporelegaladvice.com/law-articles/singapore-protection-harassment-act/",
+      "data_as_of": "2026-06-09",
+      "implication_for_us": "Contributor protection is a product feature, not a legal afterthought: pseudonymous-but-verified contribution, platform-indemnification policy where claims are evidence-backed, structured rubric fields that resist 'sting' interpretation, and a moderation layer that strips unverifiable allegations before publication."
+    },
+    {
+      "title": "Personal Data Protection Act 2012 (PDPA)",
+      "body": "PDPA governs collection, use and disclosure of personal data. Directors named by UEN+ACRA linkage are individuals, so their personal data falls in scope even where the conduct is commercial. Notification, purpose-limitation, accuracy and the right of access/correction all apply, and PDPC has shown willingness to act on reputational-data mishandling.",
+      "sentiment": "neutral",
+      "effective_date": "2012-11-15",
+      "url": "https://www.pdpc.gov.sg/",
+      "data_as_of": "2026-06-09",
+      "implication_for_us": "Lean on the legitimate-interests and publicly-available-data bases where applicable, but build accuracy and access/correction tooling from day one. Company-level conduct is lower-risk than director-level personal attribution — gate director-name display behind a higher evidence bar."
+    },
+    {
+      "title": "Building & Construction Industry Security of Payment Act 2004 (SOPA)",
+      "body": "SOPA gives construction-chain parties a statutory right to progress payments and a fast, low-cost adjudication mechanism (Singapore Mediation Centre as the Authorised Nominating Body). 2019 enhancements extended payment-response periods and set a minimum late-payment interest floor. It establishes a public, structured record of who fails to pay on time in the sector with the heaviest trade-credit dependence.",
+      "sentiment": "support",
+      "effective_date": "2005-04-01",
+      "url": "https://www1.bca.gov.sg/regulatory-info/security-of-payment/building-and-construction-industry-security-of-payment-act",
+      "data_as_of": "2026-06-09",
+      "implication_for_us": "Adjudication determinations are objective, hard-to-dispute conduct signals — ideal seed data for the construction beachhead and far more defamation-proof than user opinion. Ingest published adjudication outcomes to bootstrap the database before peer contributions reach density."
+    },
+    {
+      "title": "Companies Act s.155A — director disqualification on 3 strike-offs in 5 years",
+      "body": "A director with at least three companies struck off by the Registrar (ACRA-initiated, not voluntary) within five years can be automatically disqualified for five years from the third strike-off, barred from any directorship or company management. This is the statutory fingerprint of phoenixing — serial abandonment of non-compliant shells.",
+      "sentiment": "support",
+      "effective_date": "2016-07-01",
+      "url": "https://www.acra.gov.sg/compliance/resignation-and-disqualification-of-directors",
+      "data_as_of": "2026-06-09",
+      "implication_for_us": "Disqualification and force-strike-off records keyed to a director are objective, public, factual flags — the cleanest possible phoenixing signal and immune to the defamation problem. Cross-reference UEN+director identity against ACRA disqualification and gazetted strike-off data."
+    },
+    {
+      "title": "Companies Act — phoenix / fraudulent & insolvent trading provisions",
+      "body": "Provisions against fraudulent trading, insolvent trading and reuse of an insolvent company's name target 'phoenix' behaviour where directors abandon a debt-laden entity and re-incorporate. Enforcement is case-by-case and reactive rather than preventive, leaving counterparties exposed at the point of dealing.",
+      "sentiment": "support",
+      "effective_date": "1967-12-29",
+      "url": "https://sso.agc.gov.sg/Act/CoA1967",
+      "data_as_of": "2026-06-09",
+      "implication_for_us": "The law penalises phoenixing after the fact; the platform's value is preventive — warning a counterparty at the deal stage that a director matches a known phoenix pattern. Position the product as the early-warning layer the statute lacks."
+    },
+    {
+      "title": "Insolvency, Restructuring & Dissolution Act 2018 (IRDA) — Simplified Insolvency Programme 2.0",
+      "body": "IRDA consolidates corporate and personal insolvency. The revamped Simplified Insolvency Programme (SIP 2.0) became a permanent IRDA feature from 29 January 2026, giving micro and small companies a faster, cheaper wind-down or restructuring path. More structured exits mean more recorded distress events tied to UENs and directors.",
+      "sentiment": "neutral",
+      "effective_date": "2020-07-30",
+      "sunset_date": null,
+      "url": "https://www.mlaw.gov.sg/launch-of-revamped-sip/",
+      "data_as_of": "2026-06-09",
+      "implication_for_us": "SIP/IRDA filings, judicial-management and winding-up records are public distress signals to ingest. A permanent, easier insolvency route may raise the baseline rate of recorded exits — increasing both the data supply and the underlying counterparty risk the product addresses."
+    }
+  ],
+  "cultural_signals": [
+    {
+      "observation": "Relationship-first, 'give face' (gei mianzi) trade culture makes SME owners reluctant to publicly blacklist a counterparty they may meet again",
+      "evidence": "Singapore's SME ecosystem is dense, locally-owned (~80%) and clan/association-networked; public negative attribution risks the relationship and invites retaliation, so owners privately warn each other instead of posting on the record.",
+      "implication_for_us": "Default to private, verified, pseudonymous contribution with aggregate scoring rather than named public call-outs. The product must let users contribute without 'losing face' — surface patterns, not personal accusations."
+    },
+    {
+      "observation": "The informal grapevine already exists in WhatsApp and trade-association chat groups",
+      "evidence": "Industry WhatsApp groups, supplier chats and association mailing lists routinely pass around warnings about slow-payers and bad-faith counterparties — an unstructured, unsearchable, unverifiable reputation layer that already has product-market fit in behaviour.",
+      "implication_for_us": "Demand is proven; the wedge is structuring and verifying what already happens informally. Position as 'the grapevine, made searchable and evidence-backed' rather than introducing a new behaviour — far lower adoption friction."
+    },
+    {
+      "observation": "Kiasu (fear-of-losing) credit-control instinct coexists with conflict avoidance",
+      "evidence": "SG SMEs are highly risk-averse on cash flow (kiasu about getting burned) — 60%+ intensified collection efforts per Atradius 2025 — yet culturally avoid open confrontation, creating a gap between wanting protection and being willing to speak up.",
+      "implication_for_us": "Frame the product as defensive self-protection ('check before you extend credit') not as an offensive blacklist. The kiasu instinct is the buying trigger; conflict-avoidance is why a structured intermediary is preferred over direct call-outs."
+    },
+    {
+      "observation": "Defamation-suit fear actively chills honest negative feedback",
+      "evidence": "With no anti-SLAPP shield and a live POHA disabling-order regime, SG businesses know that an aggrieved counterparty can sue or force takedown; the 'legal-threat bullying' the platform documents is itself a reason users hesitate to contribute.",
+      "implication_for_us": "Trust and legal-safety design IS the growth lever. Visible contributor protection, evidence requirements and platform-side legal handling are prerequisites to liquidity, not nice-to-haves."
+    },
+    {
+      "observation": "High baseline trust in government data and UEN identity",
+      "evidence": "Singaporeans transact heavily off ACRA BizFile+, SingPass and Corppass; the UEN is a universally accepted, trusted business identifier and the corporate register is among Asia's most transparent.",
+      "implication_for_us": "Key identity to UEN + verified ACRA director records to inherit that trust and prevent impersonation/duplicate-entity gaming. Government-grade identity anchoring is a credibility shortcut competitors of informal channels lack."
+    }
+  ],
+  "economic_signals": [
+    {
+      "indicator": "B2B sales paid late (overdue invoices)",
+      "value": "~35% of B2B sales on credit (2025), improved from ~54% (2024)",
+      "source_url": "https://www.invoiceinterchange.com/singapore-b2b-payment-practices-2025-overdue-invoices-average-35-of-sales/",
+      "implication_for_us": "Late-payment frequency is falling, so the pitch cannot rest on 'everyone pays late.' The durable hook is the tail risk — the minority of counterparties that never pay — not the average delay."
+    },
+    {
+      "indicator": "Bad-debt write-offs (uncollectible B2B invoices)",
+      "value": "~6% of B2B invoices (2025), up from 2024; ~7% in agri-food, ~5% in energy/fuel",
+      "source_url": "https://group.atradius.com/knowledge-and-research/reports/b2b-payment-practices-trends-singapore-2025",
+      "implication_for_us": "Rising permanent losses are the strongest demand signal — write-offs are non-recoverable, so pre-deal conduct screening that avoids even one bad counterparty pays for years of subscription."
+    },
+    {
+      "indicator": "Average B2B payment terms",
+      "value": "~46 days from invoicing (2025); ~44 days in construction",
+      "source_url": "https://www.invoiceinterchange.com/singapore-b2b-payment-practices-2025-overdue-invoices-average-35-of-sales/",
+      "implication_for_us": "Roughly six-week terms mean a ~6-week exposure window per credit sale during which counterparty conduct matters — the natural moment to surface a pre-deal risk check."
+    },
+    {
+      "indicator": "Share of B2B sales transacted on credit",
+      "value": "~54% of B2B sales on credit (2025); ~55% in construction",
+      "source_url": "https://group.atradius.com/knowledge-and-research/reports/b2b-payment-practices-trends-singapore-2025",
+      "implication_for_us": "Over half of B2B volume carries counterparty credit risk — this is the SAM denominator. Construction's higher dependence confirms it as the beachhead vertical."
+    },
+    {
+      "indicator": "Annual cost of chasing late payers per SME",
+      "value": "~S$4,000/yr; ~52% of SMEs exposed to overdue-payment impact",
+      "source_url": "https://www.invoiceinterchange.com/overdue-payment-affect-smes/",
+      "implication_for_us": "A quantified, single-source pain figure to anchor pricing against. Even modest deflection of this chasing burden justifies a several-hundred-dollar annual subscription."
+    },
+    {
+      "indicator": "Corporate compulsory winding-up orders",
+      "value": "307 companies compulsorily wound up in 2024 (+52.7% YoY)",
+      "source_url": "https://io.mlaw.gov.sg/corporate-insolvency/statistics/",
+      "implication_for_us": "A sharp rise in formal corporate failures means more counterparties going insolvent mid-relationship — rising supply of distress events to ingest and rising urgency for early-warning screening."
+    },
+    {
+      "indicator": "Active business entities / SME base",
+      "value": ">614,000 active entities; ~456,000 companies (Jul 2025); >300,000 SMEs (99% of enterprises)",
+      "source_url": "https://www.acra.gov.sg/training-and-resources/facts-and-figures/statistical-highlights-2025",
+      "implication_for_us": "The total addressable counterparty universe and the SME buyer base. Wide enough that even single-digit-percent penetration is a viable business."
+    }
+  ],
+  "adoption_patterns": {
+    "sme_penetration_pct": 4,
+    "mnc_penetration_pct": 18,
+    "note": "Penetration estimates are entrant-model projections, not measured shares. SME uptake is structurally throttled by the cold-start network effect and the POHA/defamation chill on contribution; MNCs and larger firms already buy adjacent risk-intel (Experian-DP, SCCB, Dun & Bradstreet, Coface) and would adopt a conduct layer faster as a supplement to existing financial scoring, hence the higher figure. Both are 3-year horizon estimates.",
+    "country_readiness": [
+      {"country": "Singapore", "regulatory": 3, "tech_maturity": 5, "price_tolerance": 4},
+      {"country": "Malaysia", "regulatory": 3, "tech_maturity": 4, "price_tolerance": 3},
+      {"country": "Indonesia", "regulatory": 2, "tech_maturity": 3, "price_tolerance": 2},
+      {"country": "Philippines", "regulatory": 2, "tech_maturity": 3, "price_tolerance": 2},
+      {"country": "Vietnam", "regulatory": 2, "tech_maturity": 3, "price_tolerance": 2}
+    ]
+  },
+  "trends": [
+    {
+      "title": "Open-government UEN & corporate data is increasingly machine-accessible",
+      "evidence": "ACRA BizFile+, data.gov.sg and the UEN registry expose entity, director and (force-)strike-off data; ACRA's register is rated among Asia's most transparent and digitally accessible.",
+      "implication_for_us": "Public structured data — disqualifications, gazetted strike-offs, winding-up, SOPA adjudications — can bootstrap the database with objective, defamation-proof signals before peer contributions reach density."
+    },
+    {
+      "title": "AI and alternative-data credit scoring is moving past financial statements",
+      "evidence": "KYB platforms (Know Your Customer, Sumsub, QCC) and bureaus increasingly blend behavioural and alternative data; the market has 'moved beyond basic entity lookups' to ownership-mapping and screening workflows.",
+      "implication_for_us": "Counterparty CONDUCT data is the next alt-data frontier and the one incumbents have not captured. Frame the product as the behavioural layer that AI risk models currently lack an input for."
+    },
+    {
+      "title": "Rising insolvencies post rate-hikes increase counterparty risk salience",
+      "evidence": "Compulsory windings-up jumped ~53% to 307 in 2024; bankruptcy filings rose ~25% in H1 2024; SIP 2.0 made simplified insolvency a permanent feature from Jan 2026.",
+      "implication_for_us": "A worsening distress cycle raises both the data supply (more recorded failures) and the felt need for pre-deal screening — a tailwind for adoption and a reason to seed insolvency data now."
+    },
+    {
+      "title": "ESG and supply-chain due-diligence obligations are pushing conduct checks down to SMEs",
+      "evidence": "Larger buyers increasingly require vendors to evidence integrity and payment conduct as part of supply-chain and ESG due diligence; KYB is now triggered for loans, credit lines, BNPL and commercial insurance.",
+      "implication_for_us": "B2B conduct screening is shifting from optional to expected through procurement chains. A standardised peer-conduct score could become a vendor-onboarding checklist item, creating top-down demand."
+    },
+    {
+      "title": "Embedded-finance and BNPL growth is multiplying KYB touchpoints",
+      "evidence": "Merchant onboarding, B2B BNPL and embedded lending in Singapore each require KYB at point of credit extension; KYB is now mandatory across loans, credit lines, BNPL, commercial insurance and investment services.",
+      "implication_for_us": "Distribution opportunity: embed conduct-risk lookups as an API into onboarding, invoice-financing and BNPL flows (e.g. InvoiceInterchange-type lenders) rather than relying solely on direct SME subscriptions."
+    },
+    {
+      "title": "Trade-credit-insurance penetration is rising among SMEs across APAC",
+      "evidence": "APAC TCI revenue ~US$3.2B (2021) growing ~11% CAGR toward ~US$8.3B by 2030; SG insurers (Allianz Trade, Coface, Atradius) are actively pushing SME-tailored products despite premium-cost friction.",
+      "implication_for_us": "Insurers price on counterparty risk and want better conduct inputs — a potential data-partnership and distribution channel. A conduct score could feed underwriting or be co-sold with TCI to premium-sensitive SMEs."
+    },
+    {
+      "title": "Regulators are tightening on phoenixing and serial non-compliance",
+      "evidence": "Section 155A auto-disqualification (3 ACRA strike-offs in 5 years), force-strike-off enforcement and IRDA reforms signal sustained pressure on directors who abandon debt-laden shells.",
+      "implication_for_us": "Regulatory direction validates the core thesis — phoenixing is recognised as a real harm. The platform complements enforcement by giving counterparties a preventive, deal-time signal the law only punishes after the fact."
+    }
+  ]
+}

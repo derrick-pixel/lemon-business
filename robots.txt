@@ -3,6 +3,7 @@
 # Pre-launch concept-stage venture; do not index any path until legal sign-off.
 
 User-agent: *
+Disallow: /admin/
 Disallow: /docs/
 Disallow: /scripts/
 

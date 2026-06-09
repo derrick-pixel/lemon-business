@@ -1,0 +1,415 @@
+{
+  "meta": {"project_name":"Lemon Business — Intel Cabinet 2026","brand_tokens":{"primary":"#211d12","secondary":"#e3a400","accent":"#a86a00","neutral_dark":"#211d12","neutral_light":"#f6efda","font_display":"'Fraunces', Georgia, serif","font_body":"'Hanken Grotesk', system-ui, sans-serif"},"research_date":"2026-06-09","sample_data":false},
+
+  "strategy_canvas": {
+    "headline_thesis": "Singapore SMEs can verify a counterparty's UEN and credit default, but no one captures peer-observed CONDUCT — late payment, bad-faith disputes, legal-threat bullying, phoenixing — keyed to UEN+directors, contestable and evidence-tied.",
+    "dimensions": [
+      {"key":"peer_sourced_conduct","label":"Peer-sourced behavioural conduct"},
+      {"key":"uen_bound_identity","label":"UEN + director identity"},
+      {"key":"payment_reputation","label":"Observed payment reputation"},
+      {"key":"contestable_fair","label":"Contestable & fair (bidirectional)"},
+      {"key":"evidence_keyed","label":"Evidence-tied dated incidents"},
+      {"key":"affordable_token","label":"Affordable per-lookup pricing"},
+      {"key":"sme_self_serve","label":"SME self-serve access"},
+      {"key":"corroboration_weighted","label":"Corroboration-weighted score"},
+      {"key":"coverage_breadth","label":"SG entity coverage breadth"},
+      {"key":"pdpa_defensible","label":"PDPA / defamation-defensible"}
+    ],
+    "scores": {
+      "lemon_business": {"peer_sourced_conduct":5,"uen_bound_identity":5,"payment_reputation":4,"contestable_fair":5,"evidence_keyed":5,"affordable_token":5,"sme_self_serve":5,"corroboration_weighted":5,"coverage_breadth":1,"pdpa_defensible":4},
+      "experian_sg_dp": {"peer_sourced_conduct":1,"uen_bound_identity":4,"payment_reputation":4,"contestable_fair":2,"evidence_keyed":2,"affordable_token":1,"sme_self_serve":2,"corroboration_weighted":1,"coverage_breadth":5,"pdpa_defensible":4},
+      "sccb": {"peer_sourced_conduct":2,"uen_bound_identity":4,"payment_reputation":5,"contestable_fair":2,"evidence_keyed":2,"affordable_token":1,"sme_self_serve":2,"corroboration_weighted":2,"coverage_breadth":5,"pdpa_defensible":4},
+      "dun_bradstreet": {"peer_sourced_conduct":2,"uen_bound_identity":4,"payment_reputation":4,"contestable_fair":2,"evidence_keyed":2,"affordable_token":1,"sme_self_serve":1,"corroboration_weighted":2,"coverage_breadth":5,"pdpa_defensible":4},
+      "acra_bizfile": {"peer_sourced_conduct":0,"uen_bound_identity":5,"payment_reputation":0,"contestable_fair":1,"evidence_keyed":1,"affordable_token":4,"sme_self_serve":5,"corroboration_weighted":0,"coverage_breadth":5,"pdpa_defensible":5},
+      "handshakes": {"peer_sourced_conduct":1,"uen_bound_identity":5,"payment_reputation":1,"contestable_fair":1,"evidence_keyed":3,"affordable_token":1,"sme_self_serve":2,"corroboration_weighted":1,"coverage_breadth":5,"pdpa_defensible":4},
+      "creditsafe": {"peer_sourced_conduct":2,"uen_bound_identity":4,"payment_reputation":4,"contestable_fair":2,"evidence_keyed":2,"affordable_token":2,"sme_self_serve":3,"corroboration_weighted":2,"coverage_breadth":4,"pdpa_defensible":4},
+      "trade_grapevine": {"peer_sourced_conduct":4,"uen_bound_identity":1,"payment_reputation":3,"contestable_fair":1,"evidence_keyed":1,"affordable_token":5,"sme_self_serve":5,"corroboration_weighted":1,"coverage_breadth":1,"pdpa_defensible":1}
+    }
+  },
+
+  "heatmap": {
+    "segments": [
+      {"id":"sg_subcon_construction","name":"Sub-contractors & M&E trades","descriptor":"Sub-cons and M&E specialists exposed to main-con non-payment, back-charges and pay-when-paid abuse."},
+      {"id":"sg_wholesale_distributor","name":"Wholesalers & distributors","descriptor":"Trade-credit-heavy distributors extending 30-90 day terms to a long tail of retailer/reseller buyers."},
+      {"id":"sg_fnb_supplier","name":"F&B ingredient/equipment suppliers","descriptor":"Food, beverage and kitchen-equipment suppliers chasing thin-margin restaurant groups that churn and rebrand."},
+      {"id":"sg_logistics_freight","name":"Logistics & freight forwarders","descriptor":"Forwarders and 3PLs fronting disbursements, duties and haulage on credit for fast-moving SME shippers."},
+      {"id":"sg_creative_it_agency","name":"Creative / IT / pro-services agencies","descriptor":"Agencies and consultancies exposed to scope-creep, ghosting, IP/NDA breach and milestone-withholding clients."},
+      {"id":"sg_sme_credit_team","name":"SME finance & credit-control teams","descriptor":"In-house AR/credit teams setting terms and limits across hundreds of trade accounts."},
+      {"id":"sg_factoring_lender","name":"Invoice factoring & SME lenders","descriptor":"Factors, P2P platforms and lenders underwriting obligor and debtor risk before advancing against invoices."},
+      {"id":"sg_procurement_buyer","name":"Corporate procurement / vendor onboarding","descriptor":"Procurement and KYB teams vetting new vendors for conduct, continuity and compliance before onboarding."}
+    ],
+    "needs": [
+      {"id":"behavioural_payment_record","name":"Behavioural payment record","short":"How they actually pay, not just defaults"},
+      {"id":"uen_director_lookup","name":"UEN + director lookup","short":"Identity bound to UEN and ACRA directors"},
+      {"id":"legal_threat_flag","name":"Legal-threat/litigious flag","short":"Bad-faith disputes and lawyer-LOD bullying"},
+      {"id":"phoenix_detection","name":"Phoenix / serial-strikeoff detection","short":"Same directors, new shell, old debts"},
+      {"id":"contest_fairness","name":"Contestable evidence-tied entries","short":"Right of reply, dated, evidence-backed"},
+      {"id":"affordable_per_check","name":"Affordable per-check price","short":"Per-lookup price an SME will actually pay"},
+      {"id":"api_onboarding","name":"API for vendor onboarding","short":"Programmatic conduct check at onboarding"},
+      {"id":"pdpa_defensible","name":"PDPA/defamation-defensible","short":"Lawful, fair, defensible publication"}
+    ],
+    "cells": {
+      "sg_subcon_construction:behavioural_payment_record": {"our_score":5,"competitors":[
+        {"id":"sccb","name":"SCCB (Singapore Commercial Credit Bureau)","score":3,"specialisation_for_cell":"Trade-payment index aggregates filed bureau data but misses informal main-con back-charges and pay-when-paid stalling on site."},
+        {"id":"trade_grapevine","name":"Trade Grapevine / WhatsApp chatter","score":2,"specialisation_for_cell":"Sub-con groups swap 'who's slow to pay' gossip but it's anonymous, undated and not tied to the main-con's UEN."}
+      ]},
+      "sg_subcon_construction:uen_director_lookup": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":5,"specialisation_for_cell":"Authoritative UEN and director list for the main-con, but reveals nothing about how that director treats sub-cons on payment."},
+        {"id":"handshakes","name":"Handshakes","score":4,"specialisation_for_cell":"Maps the directors behind a construction group's web of entities, yet stops at the org chart with no payment conduct layer."}
+      ]},
+      "sg_subcon_construction:legal_threat_flag": {"our_score":5,"competitors":[
+        {"id":"lawyer_lod","name":"Lawyer letters-of-demand (in-house)","score":1,"specialisation_for_cell":"Sub-cons only learn a main-con weaponises LODs and spurious back-charges after they're already on site and exposed."},
+        {"id":"acra_adhoc_profile","name":"ACRA ad-hoc litigation note","score":1,"specialisation_for_cell":"Won't surface a main-con's pattern of threatening adjudication or counter-claims to grind sub-cons into discounts."}
+      ]},
+      "sg_subcon_construction:phoenix_detection": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":2,"specialisation_for_cell":"Shows strike-off/winding-up status by UEN but not WHY, and no link to the unpaid sub-cons left behind."},
+        {"id":"handshakes","name":"Handshakes","score":3,"specialisation_for_cell":"Can link a struck-off builder's directors to a fresh entity, but no debt-trail showing the same sub-cons got burned twice."}
+      ]},
+      "sg_subcon_construction:contest_fairness": {"our_score":5,"competitors":[
+        {"id":"trade_grapevine","name":"Trade Grapevine / WhatsApp chatter","score":1,"specialisation_for_cell":"Site gossip about a bad main-con has no right of reply, so a smeared builder can't contest a one-sided claim."},
+        {"id":"sccb","name":"SCCB","score":2,"specialisation_for_cell":"Disputes to a bureau take weeks and aren't tied to the specific dated retention/back-charge incident a sub-con logged."}
+      ]},
+      "sg_subcon_construction:affordable_per_check": {"our_score":5,"competitors":[
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":1,"specialisation_for_cell":"Full builder report costs more than a small sub-con earns on the package it's vetting, so checks just don't happen."},
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":4,"specialisation_for_cell":"Cheap profile is affordable per UEN but delivers zero conduct signal a sub-con can price its risk on."}
+      ]},
+      "sg_subcon_construction:api_onboarding": {"our_score":3,"competitors":[
+        {"id":"creditsafe","name":"Creditsafe","score":3,"specialisation_for_cell":"API returns a financial score for a main-con but no conduct field a sub-con's tender system can gate on."},
+        {"id":"acra_bizfile","name":"ACRA BizFile API","score":3,"specialisation_for_cell":"Programmatic UEN/director pull exists but carries no payment-behaviour or back-charge history to onboard against."}
+      ]},
+      "sg_subcon_construction:pdpa_defensible": {"our_score":4,"competitors":[
+        {"id":"trade_grapevine","name":"Trade Grapevine / WhatsApp chatter","score":1,"specialisation_for_cell":"Naming a 'bad paymaster' main-con in a chat group is defamation-exposed with no evidence trail or fair-comment basis."},
+        {"id":"lawyer_lod","name":"Lawyer LOD (in-house)","score":3,"specialisation_for_cell":"A sub-con's own LOD is lawful but private; it builds no shareable, defensible record for the next sub-con in line."}
+      ]},
+
+      "sg_wholesale_distributor:behavioural_payment_record": {"our_score":5,"competitors":[
+        {"id":"sccb","name":"SCCB","score":4,"specialisation_for_cell":"Strong trade-payment index on larger debtors, but the long tail of small resellers a distributor extends terms to is thin or absent."},
+        {"id":"experian_sg_dp","name":"Experian SG (Default & Payment)","score":3,"specialisation_for_cell":"Captures defaults after the fact; misses the chronic 30-to-75-day creep that erodes a distributor's working capital."}
+      ]},
+      "sg_wholesale_distributor:uen_director_lookup": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":5,"specialisation_for_cell":"Confirms a reseller's UEN and directors but won't tell a distributor those directors run three other accounts already on stop-supply."},
+        {"id":"sgpbusiness","name":"SGPBusiness","score":3,"specialisation_for_cell":"Free UEN/director snapshot for a buyer, but no cross-account behavioural link a credit-extending distributor needs."}
+      ]},
+      "sg_wholesale_distributor:legal_threat_flag": {"our_score":4,"competitors":[
+        {"id":"lawyer_lod","name":"Lawyer LOD (in-house)","score":1,"specialisation_for_cell":"A distributor finds out a buyer manufactures quality-dispute LODs to avoid paying only after stock has shipped on credit."},
+        {"id":"sccb","name":"SCCB","score":1,"specialisation_for_cell":"Bureau won't flag a buyer that routinely raises bad-faith short-delivery claims to stretch or escape invoices."}
+      ]},
+      "sg_wholesale_distributor:phoenix_detection": {"our_score":5,"competitors":[
+        {"id":"handshakes","name":"Handshakes","score":3,"specialisation_for_cell":"Links a defaulted reseller's directors to a new entity, but no record that the old account left this distributor with bad debt."},
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":2,"specialisation_for_cell":"Strike-off date is visible per UEN, but the same directors reopening under a new shell isn't surfaced to the supplier."}
+      ]},
+      "sg_wholesale_distributor:contest_fairness": {"our_score":5,"competitors":[
+        {"id":"sccb","name":"SCCB","score":2,"specialisation_for_cell":"A reseller disputing a logged late payment faces a slow bureau process detached from the specific dated invoice in question."},
+        {"id":"experian_sg_dp","name":"Experian SG","score":2,"specialisation_for_cell":"Black-box score gives a buyer no itemised, contestable incident to challenge when terms get cut."}
+      ]},
+      "sg_wholesale_distributor:affordable_per_check": {"our_score":5,"competitors":[
+        {"id":"creditsafe","name":"Creditsafe","score":2,"specialisation_for_cell":"Subscription pricing suits a few big debtors, not pay-per-look vetting across a tail of low-value reseller accounts."},
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":1,"specialisation_for_cell":"Per-report cost dwarfs the margin on a small trade-credit order, so most new resellers go unchecked."}
+      ]},
+      "sg_wholesale_distributor:api_onboarding": {"our_score":4,"competitors":[
+        {"id":"creditsafe","name":"Creditsafe","score":3,"specialisation_for_cell":"API can score a new reseller at signup but offers no peer-payment-conduct field to set initial credit terms by."},
+        {"id":"experian_sg_dp","name":"Experian SG","score":3,"specialisation_for_cell":"Onboarding API returns default risk, not the observed slow-pay behaviour that actually governs a distributor's terms."}
+      ]},
+      "sg_wholesale_distributor:pdpa_defensible": {"our_score":4,"competitors":[
+        {"id":"trade_grapevine","name":"Trade Grapevine chatter","score":1,"specialisation_for_cell":"Distributors warning each other off a 'bad reseller' in trade chats is undated, unevidenced and defamation-exposed."},
+        {"id":"sccb","name":"SCCB","score":4,"specialisation_for_cell":"Bureau is lawful but its closed model gives a distributor no shareable, evidence-tied conduct record of its own buyers."}
+      ]},
+
+      "sg_fnb_supplier:behavioural_payment_record": {"our_score":5,"competitors":[
+        {"id":"sccb","name":"SCCB","score":3,"specialisation_for_cell":"Thin trade-payment coverage on small restaurant outlets that churn fast and rarely file enough to build an index."},
+        {"id":"trade_grapevine","name":"F&B supplier chat groups","score":2,"specialisation_for_cell":"Suppliers swap 'this group bounces cheques' tips, but anonymous and not tied to the outlet's actual UEN."}
+      ]},
+      "sg_fnb_supplier:uen_director_lookup": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":5,"specialisation_for_cell":"Names the directors behind a restaurant outlet, but won't reveal they also run two closed outlets that stiffed suppliers."},
+        {"id":"sgpbusiness","name":"SGPBusiness","score":3,"specialisation_for_cell":"Quick UEN/director check on a new outlet, with no behavioural link across the operator's other F&B entities."}
+      ]},
+      "sg_fnb_supplier:legal_threat_flag": {"our_score":4,"competitors":[
+        {"id":"lawyer_lod","name":"Lawyer LOD (in-house)","score":1,"specialisation_for_cell":"Supplier learns an outlet uses spurious spoilage/quality claims to dodge payment only after delivering perishables."},
+        {"id":"acra_adhoc_profile","name":"ACRA ad-hoc note","score":1,"specialisation_for_cell":"No flag for an operator that habitually threatens 'food-safety complaint' counterclaims to negotiate invoices down."}
+      ]},
+      "sg_fnb_supplier:phoenix_detection": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":2,"specialisation_for_cell":"Shows an outlet's strike-off but not that the same operator reopened next door under a new UEN owing the old supplier."},
+        {"id":"handshakes","name":"Handshakes","score":3,"specialisation_for_cell":"Links a closed eatery's directors to a fresh F&B entity, but no trail of the unpaid ingredient invoices left behind."}
+      ]},
+      "sg_fnb_supplier:contest_fairness": {"our_score":5,"competitors":[
+        {"id":"trade_grapevine","name":"F&B supplier chat groups","score":1,"specialisation_for_cell":"An outlet smeared as a 'bouncer' in supplier chats has no dated incident or right of reply to clear its name."},
+        {"id":"sccb","name":"SCCB","score":2,"specialisation_for_cell":"Bureau dispute path is slow and disconnected from the specific dated delivery the supplier wasn't paid for."}
+      ]},
+      "sg_fnb_supplier:affordable_per_check": {"our_score":5,"competitors":[
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":1,"specialisation_for_cell":"A full report costs more than the margin on a week's ingredient deliveries to a single small outlet."},
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":4,"specialisation_for_cell":"Cheap per-outlet profile is affordable but carries no payment-conduct signal a perishables supplier can act on."}
+      ]},
+      "sg_fnb_supplier:api_onboarding": {"our_score":3,"competitors":[
+        {"id":"creditsafe","name":"Creditsafe","score":2,"specialisation_for_cell":"API can score a new outlet but has no conduct field for the 'pays on time vs strings out 60 days' distinction F&B lives on."},
+        {"id":"acra_bizfile","name":"ACRA BizFile API","score":3,"specialisation_for_cell":"Programmatic UEN check at account-open, but no operator-level payment history across their outlets."}
+      ]},
+      "sg_fnb_supplier:pdpa_defensible": {"our_score":4,"competitors":[
+        {"id":"trade_grapevine","name":"F&B supplier chat groups","score":1,"specialisation_for_cell":"Posting 'don't supply this outlet' in a chat group is undated, unevidenced and squarely defamation-exposed."},
+        {"id":"sccb","name":"SCCB","score":4,"specialisation_for_cell":"Lawful but closed; gives a supplier no shareable, evidence-tied record of which outlets actually paid late."}
+      ]},
+
+      "sg_logistics_freight:behavioural_payment_record": {"our_score":5,"competitors":[
+        {"id":"sccb","name":"SCCB","score":3,"specialisation_for_cell":"Covers larger shippers but thin on the SME consignees a forwarder fronts duties and haulage for on credit."},
+        {"id":"experian_sg_dp","name":"Experian SG","score":3,"specialisation_for_cell":"Flags shipper default after the fact, missing the chronic slow-pay that traps a forwarder's disbursement float."}
+      ]},
+      "sg_logistics_freight:uen_director_lookup": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":5,"specialisation_for_cell":"Confirms a shipper's UEN/directors but not that those directors abandoned cargo and disbursements with another forwarder."},
+        {"id":"handshakes","name":"Handshakes","score":4,"specialisation_for_cell":"Maps a shipper group's entities, yet stops short of which forwarders they left holding unpaid duty advances."}
+      ]},
+      "sg_logistics_freight:legal_threat_flag": {"our_score":4,"competitors":[
+        {"id":"lawyer_lod","name":"Lawyer LOD (in-house)","score":1,"specialisation_for_cell":"A forwarder discovers a shipper raises bogus damage/short-shipment claims to offset freight only after release of cargo."},
+        {"id":"sccb","name":"SCCB","score":1,"specialisation_for_cell":"No flag for a consignee that routinely disputes demurrage and detention in bad faith to avoid settling."}
+      ]},
+      "sg_logistics_freight:phoenix_detection": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":2,"specialisation_for_cell":"Strike-off date is visible but not that the same shipper directors reopened owing a forwarder abandoned-cargo costs."},
+        {"id":"handshakes","name":"Handshakes","score":3,"specialisation_for_cell":"Connects a defunct shipper's directors to a new entity without the trail of unpaid disbursements that triggered closure."}
+      ]},
+      "sg_logistics_freight:contest_fairness": {"our_score":5,"competitors":[
+        {"id":"sccb","name":"SCCB","score":2,"specialisation_for_cell":"A shipper contesting a logged late payment faces a slow process detached from the specific dated disbursement invoice."},
+        {"id":"trade_grapevine","name":"Forwarder WhatsApp groups","score":1,"specialisation_for_cell":"Warnings about a 'bad shipper' circulate with no right of reply, so a disputed claim can't be fairly challenged."}
+      ]},
+      "sg_logistics_freight:affordable_per_check": {"our_score":5,"competitors":[
+        {"id":"creditsafe","name":"Creditsafe","score":2,"specialisation_for_cell":"Subscription model doesn't fit a forwarder pay-per-checking a long tail of one-off SME shippers."},
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":1,"specialisation_for_cell":"Per-report cost exceeds the freight margin on a single shipment, so new consignees ship un-vetted."}
+      ]},
+      "sg_logistics_freight:api_onboarding": {"our_score":4,"competitors":[
+        {"id":"creditsafe","name":"Creditsafe","score":3,"specialisation_for_cell":"API scores a new shipper's financials but exposes no peer-conduct field a TMS can gate a credit-release decision on."},
+        {"id":"acra_bizfile","name":"ACRA BizFile API","score":3,"specialisation_for_cell":"UEN/director pull at onboarding with no record of disbursement-payment behaviour to other forwarders."}
+      ]},
+      "sg_logistics_freight:pdpa_defensible": {"our_score":4,"competitors":[
+        {"id":"trade_grapevine","name":"Forwarder WhatsApp groups","score":1,"specialisation_for_cell":"Naming a non-paying shipper in a forwarder chat is undated, unevidenced and defamation-exposed."},
+        {"id":"sccb","name":"SCCB","score":4,"specialisation_for_cell":"Lawful but closed; no shareable, evidence-tied conduct record a forwarder can build on its own bad debtors."}
+      ]},
+
+      "sg_creative_it_agency:behavioural_payment_record": {"our_score":5,"competitors":[
+        {"id":"experian_sg_dp","name":"Experian SG","score":2,"specialisation_for_cell":"Captures formal default, blind to clients who milestone-withhold and stretch agencies to 90+ days as a tactic."},
+        {"id":"trade_grapevine","name":"Agency founder Slack/chat","score":2,"specialisation_for_cell":"Founders warn each other about ghosting clients, but anonymously and not tied to the client's UEN."}
+      ]},
+      "sg_creative_it_agency:uen_director_lookup": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":5,"specialisation_for_cell":"Names the client's directors but not that they ghosted two other agencies on final-milestone payment."},
+        {"id":"sgpbusiness","name":"SGPBusiness","score":3,"specialisation_for_cell":"Fast UEN/director check on a prospect, with no link to their conduct history with prior vendors."}
+      ]},
+      "sg_creative_it_agency:legal_threat_flag": {"our_score":5,"competitors":[
+        {"id":"lawyer_lod","name":"Lawyer LOD (in-house)","score":1,"specialisation_for_cell":"Agency only learns a client weaponises 'breach of brief' or IP/NDA threats to avoid the last invoice after delivering work."},
+        {"id":"acra_adhoc_profile","name":"ACRA ad-hoc note","score":1,"specialisation_for_cell":"No flag for a client with a pattern of spurious scope-dispute LODs to claw back creative or dev fees."}
+      ]},
+      "sg_creative_it_agency:phoenix_detection": {"our_score":4,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":2,"specialisation_for_cell":"Shows a client startup's strike-off, not that the same founders relaunched owing an agency its final invoice."},
+        {"id":"handshakes","name":"Handshakes","score":3,"specialisation_for_cell":"Links a folded client's directors to a new venture, but no trail of the agencies left with unpaid deliverables."}
+      ]},
+      "sg_creative_it_agency:contest_fairness": {"our_score":5,"competitors":[
+        {"id":"trade_grapevine","name":"Agency founder chat","score":1,"specialisation_for_cell":"A client branded a 'ghoster' in founder chats has no dated incident or right of reply to dispute a one-sided account."},
+        {"id":"experian_sg_dp","name":"Experian SG","score":2,"specialisation_for_cell":"Opaque score gives a client no itemised, contestable incident behind a tightened-terms decision."}
+      ]},
+      "sg_creative_it_agency:affordable_per_check": {"our_score":5,"competitors":[
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":1,"specialisation_for_cell":"Per-report price is unjustifiable for a small agency vetting a project worth a few thousand dollars."},
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":4,"specialisation_for_cell":"Cheap profile is affordable but tells an agency nothing about a client's actual payment and dispute conduct."}
+      ]},
+      "sg_creative_it_agency:api_onboarding": {"our_score":3,"competitors":[
+        {"id":"creditsafe","name":"Creditsafe","score":2,"specialisation_for_cell":"API can score a client but offers no conduct field a CRM can use to flag a deposit-required new account."},
+        {"id":"acra_bizfile","name":"ACRA BizFile API","score":3,"specialisation_for_cell":"UEN/director pull at intake without any prior-vendor payment or NDA-breach signal."}
+      ]},
+      "sg_creative_it_agency:pdpa_defensible": {"our_score":4,"competitors":[
+        {"id":"trade_grapevine","name":"Agency founder chat","score":1,"specialisation_for_cell":"Publicly naming a 'non-paying client' in a founder group is undated, unevidenced and defamation-exposed."},
+        {"id":"lawyer_lod","name":"Lawyer LOD (in-house)","score":3,"specialisation_for_cell":"An agency's own LOD is lawful but private; it builds no shareable, defensible warning for the next agency pitched."}
+      ]},
+
+      "sg_sme_credit_team:behavioural_payment_record": {"our_score":5,"competitors":[
+        {"id":"sccb","name":"SCCB","score":4,"specialisation_for_cell":"Trade-payment index is the team's best current tool but lags real behaviour and thins out on small accounts."},
+        {"id":"experian_sg_dp","name":"Experian SG","score":4,"specialisation_for_cell":"Default-and-payment data informs limits but reflects past defaults, not the live slow-pay drift AR teams chase daily."}
+      ]},
+      "sg_sme_credit_team:uen_director_lookup": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":5,"specialisation_for_cell":"Authoritative UEN/director source for the master file, but adds no behavioural dimension a credit policy can weight."},
+        {"id":"handshakes","name":"Handshakes","score":4,"specialisation_for_cell":"Reveals group structure and common directors across accounts, without the conduct layer to set exposure limits by."}
+      ]},
+      "sg_sme_credit_team:legal_threat_flag": {"our_score":4,"competitors":[
+        {"id":"sccb","name":"SCCB","score":1,"specialisation_for_cell":"No signal for debtors that habitually raise bad-faith disputes or LOD threats to stall a credit team's collections."},
+        {"id":"lawyer_lod","name":"Lawyer LOD (in-house)","score":2,"specialisation_for_cell":"The team's own collection LODs aren't pooled, so a serial litigious debtor's pattern stays invisible across creditors."}
+      ]},
+      "sg_sme_credit_team:phoenix_detection": {"our_score":5,"competitors":[
+        {"id":"handshakes","name":"Handshakes","score":3,"specialisation_for_cell":"Surfaces common directors across a struck-off and a new entity, but not which of the team's own write-offs they caused."},
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":2,"specialisation_for_cell":"Strike-off status by UEN, but no alert linking a new applicant to directors behind a past bad debt."}
+      ]},
+      "sg_sme_credit_team:contest_fairness": {"our_score":5,"competitors":[
+        {"id":"experian_sg_dp","name":"Experian SG","score":2,"specialisation_for_cell":"Opaque scoring leaves a credit team unable to show a disputing customer the dated incident behind a limit cut."},
+        {"id":"sccb","name":"SCCB","score":2,"specialisation_for_cell":"Dispute resolution is slow and not anchored to the specific invoice the AR team actually logged."}
+      ]},
+      "sg_sme_credit_team:affordable_per_check": {"our_score":4,"competitors":[
+        {"id":"creditsafe","name":"Creditsafe","score":3,"specialisation_for_cell":"Subscription works for a busy team but per-account economics still discourage checking the smallest exposures."},
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":2,"specialisation_for_cell":"Premium per-report pricing forces teams to ration checks to only the largest credit lines."}
+      ]},
+      "sg_sme_credit_team:api_onboarding": {"our_score":5,"competitors":[
+        {"id":"experian_sg_dp","name":"Experian SG","score":4,"specialisation_for_cell":"Mature API feeds limits into the AR system but returns default risk, not the peer-observed conduct the team wants."},
+        {"id":"creditsafe","name":"Creditsafe","score":4,"specialisation_for_cell":"Solid onboarding API and monitoring, yet no conduct/dispute field to layer onto the financial score."}
+      ]},
+      "sg_sme_credit_team:pdpa_defensible": {"our_score":4,"competitors":[
+        {"id":"sccb","name":"SCCB","score":4,"specialisation_for_cell":"Bureau is lawful and well-governed, but its closed model gives the team no shareable, evidence-tied conduct record."},
+        {"id":"experian_sg_dp","name":"Experian SG","score":4,"specialisation_for_cell":"PDPA-compliant data supply, though the team can't surface a defensible incident-level basis to a disputing customer."}
+      ]},
+
+      "sg_factoring_lender:behavioural_payment_record": {"our_score":5,"competitors":[
+        {"id":"sccb","name":"SCCB","score":4,"specialisation_for_cell":"Debtor trade-payment index aids underwriting but lags the live slow-pay behaviour that decides invoice recoverability."},
+        {"id":"experian_sg_dp","name":"Experian SG","score":4,"specialisation_for_cell":"Default data scores the obligor, missing the chronic dispute-and-delay conduct that erodes a factored receivable."}
+      ]},
+      "sg_factoring_lender:uen_director_lookup": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":5,"specialisation_for_cell":"Confirms obligor and director identity for underwriting, with no behavioural read on how that obligor pays factored debts."},
+        {"id":"handshakes","name":"Handshakes","score":4,"specialisation_for_cell":"Exposes related-party links between borrower and debtor (fraud risk), but not their peer-payment conduct."}
+      ]},
+      "sg_factoring_lender:legal_threat_flag": {"our_score":5,"competitors":[
+        {"id":"lawyer_lod","name":"Lawyer LOD (in-house)","score":1,"specialisation_for_cell":"A factor learns an obligor weaponises disputes to avoid paying assigned invoices only after advancing the funds."},
+        {"id":"complyadvantage","name":"ComplyAdvantage","score":2,"specialisation_for_cell":"Screens sanctions/adverse media but not the commercial bad-faith-dispute pattern that sinks a factored invoice."}
+      ]},
+      "sg_factoring_lender:phoenix_detection": {"our_score":5,"competitors":[
+        {"id":"handshakes","name":"Handshakes","score":4,"specialisation_for_cell":"Strong at linking directors across entities, but no debt-trail showing an obligor phoenixed on prior assigned invoices."},
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":2,"specialisation_for_cell":"Strike-off date supports underwriting, but no alert that the same directors left a lender unpaid before."}
+      ]},
+      "sg_factoring_lender:contest_fairness": {"our_score":4,"competitors":[
+        {"id":"experian_sg_dp","name":"Experian SG","score":2,"specialisation_for_cell":"Opaque obligor score gives the underwriter no contestable incident detail to weigh in a borderline advance."},
+        {"id":"sccb","name":"SCCB","score":2,"specialisation_for_cell":"Disputed entries resolve slowly and aren't tied to the dated invoice a factor is being asked to fund."}
+      ]},
+      "sg_factoring_lender:affordable_per_check": {"our_score":4,"competitors":[
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":2,"specialisation_for_cell":"Per-report cost is tolerable on large facilities but discourages checking every small obligor in a factored pool."},
+        {"id":"creditsafe","name":"Creditsafe","score":3,"specialisation_for_cell":"Subscription pricing suits volume underwriting yet still lacks per-look conduct data on tail obligors."}
+      ]},
+      "sg_factoring_lender:api_onboarding": {"our_score":5,"competitors":[
+        {"id":"funding_societies","name":"Funding Societies (internal underwriting)","score":3,"specialisation_for_cell":"Proprietary risk models score borrowers in-house but can't import cross-lender peer-conduct on shared obligors."},
+        {"id":"experian_sg_dp","name":"Experian SG","score":4,"specialisation_for_cell":"Underwriting API delivers default risk programmatically, but no conduct/dispute field to price recovery risk."}
+      ]},
+      "sg_factoring_lender:pdpa_defensible": {"our_score":4,"competitors":[
+        {"id":"complyadvantage","name":"ComplyAdvantage","score":4,"specialisation_for_cell":"Defensible for AML screening, but it isn't a lawful basis for assessing commercial payment conduct."},
+        {"id":"sccb","name":"SCCB","score":4,"specialisation_for_cell":"Lawful bureau data, yet closed; gives a lender no shareable, evidence-tied obligor-conduct record to underwrite on."}
+      ]},
+
+      "sg_procurement_buyer:behavioural_payment_record": {"our_score":4,"competitors":[
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":3,"specialisation_for_cell":"Vendor financial-payment data informs onboarding but doesn't capture how the vendor treats ITS sub-suppliers."},
+        {"id":"creditsafe","name":"Creditsafe","score":3,"specialisation_for_cell":"Scores vendor liquidity, missing the conduct (sub-tier non-payment, disputes) that drives supply-chain continuity risk."}
+      ]},
+      "sg_procurement_buyer:uen_director_lookup": {"our_score":5,"competitors":[
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":5,"specialisation_for_cell":"Core KYB UEN/director source for vendor master data, but contributes no conduct or continuity signal to onboarding."},
+        {"id":"handshakes","name":"Handshakes","score":5,"specialisation_for_cell":"Excellent UBO/director mapping for KYB, yet stops at structure with no behavioural-reputation overlay."}
+      ]},
+      "sg_procurement_buyer:legal_threat_flag": {"our_score":4,"competitors":[
+        {"id":"complyadvantage","name":"ComplyAdvantage","score":3,"specialisation_for_cell":"Adverse-media screening may catch litigation news but not a vendor's quiet pattern of bad-faith disputes with peers."},
+        {"id":"acra_adhoc_profile","name":"ACRA ad-hoc litigation note","score":2,"specialisation_for_cell":"One-off litigation lookup is reactive and won't show a vendor's habitual legal-threat conduct toward counterparties."}
+      ]},
+      "sg_procurement_buyer:phoenix_detection": {"our_score":5,"competitors":[
+        {"id":"handshakes","name":"Handshakes","score":4,"specialisation_for_cell":"Links a new vendor's directors to a struck-off entity, but no record they abandoned obligations to other buyers."},
+        {"id":"acra_bizfile","name":"ACRA BizFile","score":2,"specialisation_for_cell":"Shows the vendor's prior entity was struck off, without the conduct trail explaining why or who was left unpaid."}
+      ]},
+      "sg_procurement_buyer:contest_fairness": {"our_score":5,"competitors":[
+        {"id":"sumsub","name":"Sumsub (KYB)","score":2,"specialisation_for_cell":"Verifies vendor identity at onboarding but has no contestable, evidence-tied conduct record for a vendor to respond to."},
+        {"id":"complyadvantage","name":"ComplyAdvantage","score":2,"specialisation_for_cell":"Adverse-media hits can be false positives with weak right-of-reply, unlike a dated, contestable incident model."}
+      ]},
+      "sg_procurement_buyer:affordable_per_check": {"our_score":4,"competitors":[
+        {"id":"dun_bradstreet","name":"Dun & Bradstreet","score":2,"specialisation_for_cell":"Enterprise pricing is fine for strategic vendors but deters conduct-checking the long tail of small suppliers."},
+        {"id":"sumsub","name":"Sumsub (KYB)","score":3,"specialisation_for_cell":"Per-verification KYB pricing is reasonable but buys identity assurance, not affordable conduct intelligence."}
+      ]},
+      "sg_procurement_buyer:api_onboarding": {"our_score":5,"competitors":[
+        {"id":"sumsub","name":"Sumsub (KYB)","score":4,"specialisation_for_cell":"Strong KYB onboarding API for identity and UBO, but returns no peer-conduct field to gate a vendor approval on."},
+        {"id":"handshakes","name":"Handshakes API","score":4,"specialisation_for_cell":"API delivers structure/director data into vendor onboarding, with no behavioural-reputation signal attached."}
+      ]},
+      "sg_procurement_buyer:pdpa_defensible": {"our_score":4,"competitors":[
+        {"id":"complyadvantage","name":"ComplyAdvantage","score":4,"specialisation_for_cell":"Defensible for AML/adverse-media, but not a lawful, fair basis for publishing commercial-conduct judgements."},
+        {"id":"sumsub","name":"Sumsub (KYB)","score":4,"specialisation_for_cell":"PDPA-aligned identity verification, yet provides no defensible, evidence-tied conduct record to share between buyers."}
+      ]}
+    }
+  },
+
+  "attack_plans": [
+    {
+      "rank": 1,
+      "niche_name": "The Sub-Con Paymaster Ledger",
+      "icp": "SG M&E and specialist sub-contractors (10-80 staff) repeatedly burned by main-con late payment, back-charges and pay-when-paid stalling before signing the next package.",
+      "whitespace_segment_id": "sg_subcon_construction",
+      "tam_estimate_sgd": "S$9-14M/yr ARR ceiling: ~20,000 construction sub-con/M&E SMEs in SG, ~30% credit-pained and willing to pay ~S$40-60/mo or S$8/check at scale.",
+      "tam_reasoning": "BCA registers tens of thousands of contractors; SOPA adjudication volume proves chronic payment conflict. Even 6,000 paying sub-cons at ~S$150/yr blended (subscription + checks) clears S$9M, before main-cons pay to manage their own reputation.",
+      "why_gap": "ACRA shows a main-con's UEN and strike-off but never WHY or who it stiffed; SCCB lags and misses informal back-charges; the real signal lives in WhatsApp groups that are anonymous, undated and legally radioactive.",
+      "why_we_win": "We bind every payment incident to the main-con's UEN+directors, date it, attach the retention/back-charge evidence, and let the main-con contest it — turning toxic chat gossip into a defensible, corroboration-weighted ledger no bureau can replicate.",
+      "gtm": {
+        "channel": "Trade associations (SCAL, SMECC), BCA contractor forums, and direct outreach to sub-con quantity surveyors and finance heads; seed with SOPA-adjudication public records.",
+        "pitch": "Before you sign the next package, see how this main-con actually paid the last twenty sub-cons it hired — dated, evidenced, and contestable.",
+        "pricing": "S$49/mo team plan with fair-use checks, or S$8 per one-off main-con lookup; first reputation report on your own UEN free to drive bidirectional sign-up.",
+        "content": "A public 'Main-Con Payment Conduct Index' teaser, SOPA-case explainers, and a 'know before you bid' checklist gated behind UEN sign-in."
+      }
+    },
+    {
+      "rank": 2,
+      "niche_name": "Opacity Arbitrage: Glass-Box Conduct vs Black-Box Scores",
+      "icp": "SME finance, AR and credit-control teams across distribution, F&B supply and logistics frustrated that bureau scores are opaque, un-actionable and unfair to disputing customers.",
+      "whitespace_segment_id": "sg_sme_credit_team",
+      "tam_estimate_sgd": "S$12-18M/yr: ~280,000 active SG SMEs, a serviceable ~25,000 with a dedicated AR/credit function paying S$50-120/mo for a conduct layer alongside their bureau spend.",
+      "tam_reasoning": "Credit teams already budget for Experian/SCCB; we sell a complementary, cheaper conduct lens, not a rip-and-replace. Capturing 10,000 teams at ~S$1,200/yr blended yields S$12M without displacing incumbent bureau contracts.",
+      "why_gap": "Bureaus deliberately sell a number, not the incidents behind it; a credit manager can't show a disputing customer WHY their limit was cut, and the score reflects past default, not live slow-pay drift.",
+      "why_we_win": "Every Lemon entry is an itemised, dated, evidence-tied incident the customer can contest — turning the bureau's opacity into our wedge: we are the glass box that sits next to their black box.",
+      "gtm": {
+        "channel": "Credit-management associations, AR-automation tool partnerships (integration listings), LinkedIn to AR/finance managers, and a comparison microsite.",
+        "pitch": "Your bureau gives you a number you can't explain. We give you the dated, contestable incidents behind how a counterparty really behaves.",
+        "pricing": "S$59/mo per team for a check allowance + monitoring; volume API tier for AR systems at per-call rates undercutting incumbent enterprise pricing.",
+        "content": "A 'Why your credit score is a black box' explainer series, a free conduct-vs-default comparison tool, and PDPA-fair-dispute templates."
+      }
+    },
+    {
+      "rank": 3,
+      "niche_name": "Phoenix Watch on ACRA Strike-Offs",
+      "icp": "Distributors, F&B suppliers and SME lenders repeatedly burned by directors who strike off a debt-laden shell and reopen under a fresh UEN owing the same creditors.",
+      "whitespace_segment_id": "sg_wholesale_distributor",
+      "tam_estimate_sgd": "S$6-10M/yr: phoenixing touches every credit-extending segment; a cross-segment monitoring product at S$30-80/mo to ~12,000 exposed SMEs underpins the range.",
+      "tam_reasoning": "ACRA processes tens of thousands of strike-offs and winding-ups annually; a meaningful share are debt-shedding directors. A horizontal alert product priced low and sold across distribution, F&B and lending compounds into S$6M+ even at modest penetration.",
+      "why_gap": "ACRA shows a UEN was struck off but not that the same directors relaunched, and never links the new entity to the creditors the old one burned; Handshakes maps the directors but carries no unpaid-debt trail.",
+      "why_we_win": "We sit on top of ACRA strike-off data, link directors to their new and prior entities, and overlay the peer-logged unpaid-debt incidents — so a creditor gets an alert the moment a known bad-faith director re-emerges under a new UEN.",
+      "gtm": {
+        "channel": "ACRA open-data ingestion + alerting; distribution via trade associations, accounting/bookkeeping firms, and an embeddable 'phoenix alert' widget.",
+        "pitch": "The director who didn't pay you last year just registered a new company. We tell you before you extend credit to the same person again.",
+        "pricing": "S$29/mo watchlist with director-linked alerts; per-check S$8 for ad-hoc 'is this a phoenix?' lookups.",
+        "content": "A monthly anonymised 'phoenix radar' digest, case studies of director-to-new-entity chains, and a free strike-off director lookup as a lead magnet."
+      }
+    },
+    {
+      "rank": 4,
+      "niche_name": "The KYB Conduct Layer for Vendor Onboarding",
+      "icp": "Corporate procurement and vendor-onboarding teams that already run KYB (Sumsub/Handshakes) but have no behavioural-conduct signal to flag risky suppliers before approval.",
+      "whitespace_segment_id": "sg_procurement_buyer",
+      "tam_estimate_sgd": "S$8-13M/yr: ~2,000-3,000 mid-to-large SG buyers running formal vendor onboarding, paying S$3-8k/yr for an API conduct layer plus per-check overage.",
+      "tam_reasoning": "Procurement teams already pay for KYB and adverse-media; a conduct API is an incremental line item, not a new budget. Even 1,500 buyers at ~S$6k/yr blended (platform + API calls) reaches ~S$9M, with upside from supply-chain-continuity mandates.",
+      "why_gap": "KYB tools verify a vendor IS who they say and map UBOs, but say nothing about how that vendor treats ITS sub-suppliers — the sub-tier non-payment and dispute conduct that drives real supply-chain-continuity risk.",
+      "why_we_win": "We expose peer-observed conduct as a single API field that drops into existing onboarding flows, keyed to UEN+directors and contestable — the missing behavioural overlay on top of identity-only KYB.",
+      "gtm": {
+        "channel": "Direct enterprise sales to procurement and TPRM leads; integration partnerships with KYB/onboarding vendors and procurement platforms.",
+        "pitch": "You verify a vendor exists. We tell you whether it pays its own suppliers and fights disputes in bad faith — before you onboard it.",
+        "pricing": "Annual platform fee from S$3,000 + metered API calls; pilot at fixed price for a single high-risk vendor category.",
+        "content": "A TPRM whitepaper on conduct vs identity risk, an API quickstart for onboarding teams, and a supply-chain-continuity scorecard demo."
+      }
+    },
+    {
+      "rank": 5,
+      "niche_name": "Trade-Association Counterparty Watchlist",
+      "icp": "Industry and trade associations (construction, F&B supply, forwarders, agencies) whose members repeatedly warn each other about bad paymasters in legally exposed chat groups.",
+      "tam_estimate_sgd": "S$4-7M/yr: dozens of SG trade bodies with member bases of hundreds to thousands; a white-labelled member-benefit watchlist at S$15-40k/yr per association plus member upsell.",
+      "tam_reasoning": "Associations seek differentiated member benefits and already field 'is X a bad payer?' questions informally. Licensing a governed, PDPA-defensible watchlist to ~80 bodies at ~S$25k/yr blended, plus member subscriptions, supports the S$4-7M band.",
+      "why_gap": "The conduct knowledge already exists inside association WhatsApp groups but is anonymous, undated, uncorroborated and a defamation liability the association itself can't endorse or formalise.",
+      "why_we_win": "We convert that latent member knowledge into a corroboration-weighted, contestable, UEN-keyed watchlist the association can offer as a governed benefit — capturing a ready-made, trusted distribution channel and dense seed data in one move.",
+      "gtm": {
+        "channel": "Partnerships and revenue-share with trade associations; co-branded launch to their members; secretariat-led onboarding.",
+        "pitch": "Turn your members' whispered warnings into a governed, fair, defensible counterparty watchlist — a benefit only your association can offer.",
+        "pricing": "S$15-40k/yr white-label licence per association based on member count, with discounted member-tier subscriptions on top.",
+        "content": "A member-benefit one-pager, a 'from chat group to defensible record' explainer, and an anonymised pilot watchlist for the launch association."
+      }
+    },
+    {
+      "rank": 6,
+      "niche_name": "Bad-Faith Dispute & Legal-Threat Register",
+      "icp": "Creative/IT/professional-services agencies and suppliers targeted by clients who weaponise spurious scope, quality or IP/NDA disputes and lawyer LODs to avoid final payment.",
+      "whitespace_segment_id": "sg_creative_it_agency",
+      "tam_estimate_sgd": "S$5-8M/yr: ~30,000 SG agencies/consultancies and project-based suppliers; a serviceable ~15,000 acutely dispute-exposed paying ~S$30-50/mo or per-check.",
+      "tam_reasoning": "Project-based vendors face concentrated final-milestone risk and remember every bad client. Converting 10,000 at ~S$500/yr blended (subscription + checks) reaches S$5M, with upside as the register extends into logistics and F&B dispute abuse.",
+      "why_gap": "No incumbent captures litigious bad-faith conduct: bureaus score default, KYB verifies identity, adverse-media catches news — but the quiet pattern of a client manufacturing disputes to claw back fees is invisible until you're the next victim.",
+      "why_we_win": "We register dated, evidence-tied legal-threat and bad-faith-dispute incidents keyed to UEN+directors, contestable by the accused — the only structured, defensible record of litigious conduct a vendor can check before signing.",
+      "gtm": {
+        "channel": "Agency and freelancer communities, professional-services bodies, contract-and-invoicing tool partnerships, and founder-network referral.",
+        "pitch": "Some clients pay by manufacturing a dispute. Check the legal-threat register before you take the brief — dated, evidenced, contestable.",
+        "pricing": "S$39/mo for agencies with a check allowance, or S$8 per client lookup; deposit-recommendation flag included.",
+        "content": "A 'red flags of a non-paying client' guide, anonymised bad-faith-dispute pattern reports, and contract clause templates that pair with a pre-engagement check."
+      }
+    }
+  ]
+}

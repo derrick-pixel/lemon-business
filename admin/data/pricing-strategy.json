@@ -1,0 +1,206 @@
+{
+  "meta": {"project_name":"Lemon Business — Intel Cabinet 2026","brand_tokens":{"primary":"#211d12","secondary":"#e3a400","accent":"#a86a00","neutral_dark":"#211d12","neutral_light":"#f6efda","font_display":"'Fraunces', Georgia, serif","font_body":"'Hanken Grotesk', system-ui, sans-serif"},"research_date":"2026-06-09","sample_data":false},
+  "personas": [
+    {
+      "id": "subcon_owner",
+      "name": "Specialist-Trade Subcontractor Owner",
+      "icp": "Owner-operator of a 5-30 staff M&E, renovation or specialist-trade subcon doing project work for main-cons and developers; cashflow runs on progress claims and 5-10% retention.",
+      "pains": [
+        "Main-cons pay 60-120 days late and dispute claims to delay payment",
+        "Retention sums quietly withheld or never released after defect-liability period",
+        "No way to know a main-con's payment reputation before signing the LOA",
+        "Bad-faith variation disputes used as leverage to shave the final account"
+      ],
+      "current_workaround": "Asks other subbies in the same trade WhatsApp groups whether a main-con pays; gut feel and word-of-mouth only.",
+      "wtp_band_sgd": {"low_anchor": 5, "expected": 10, "upper_stretch": 25},
+      "nba": {
+        "method": "time_value",
+        "summary": "One avoided late-pay or retention chase saves ~2.5h/mo of owner admin and calls at S$45/h owner time.",
+        "inputs": {"hourly_sgd": 45, "hours_saved_per_month": 2.5},
+        "monthly_sgd_equivalent": 18.0,
+        "confidence": 0.55
+      },
+      "whitespace_segment_ids": ["sg_subcon_construction"]
+    },
+    {
+      "id": "sme_credit_controller",
+      "name": "SME Credit-Control Manager",
+      "icp": "Finance or credit-control manager at a 20-150 staff SME who approves trade-credit limits and payment terms for new B2B accounts.",
+      "pains": [
+        "Vetting a new account before extending terms relies on a thin ACRA filing snapshot",
+        "Financial statements lag 12-18 months and hide current payment behaviour",
+        "Existing aged-debtors only show how a customer pays YOU, not the market",
+        "Pressure from sales to approve terms fast with no peer signal to push back on"
+      ],
+      "current_workaround": "Pulls an ACRA Business Profile (~S$5.50) plus an ad-hoc commercial credit report when the limit is large; otherwise approves on sales' say-so.",
+      "wtp_band_sgd": {"low_anchor": 10, "expected": 18, "upper_stretch": 35},
+      "nba": {
+        "method": "competitor_price",
+        "summary": "Substitutes part of a recurring DP/Experian commercial-report spend with peer payment signal for routine accounts.",
+        "inputs": {"competitor_id": "experian_sg_dp", "competitor_monthly_sgd": 40},
+        "monthly_sgd_equivalent": 40.0,
+        "confidence": 0.6
+      },
+      "whitespace_segment_ids": ["sg_sme_credit_team"]
+    },
+    {
+      "id": "wholesale_distributor",
+      "name": "Wholesale / Trade-Credit Distributor",
+      "icp": "Wholesaler or distributor (FMCG, building materials, electronics) shipping stock on 30-60 day trade credit to a long tail of resellers and retailers.",
+      "pains": [
+        "Ships goods first, gets paid last; a single phoenixing customer wipes a month's margin",
+        "Long tail of small buyers too low-value to justify a S$40-60 credit report each",
+        "Customers vanish or rebrand under a new UEN leaving the invoice stranded",
+        "Sales-led onboarding extends credit before finance ever sees the account"
+      ],
+      "current_workaround": "Extends a small starter limit on gut feel, watches first two payment cycles, then raises the limit; eats the occasional bad debt as cost of doing business.",
+      "wtp_band_sgd": {"low_anchor": 8, "expected": 15, "upper_stretch": 30},
+      "nba": {
+        "method": "competitor_price",
+        "summary": "Replaces occasional ad-hoc ACRA pulls plus grapevine checks with cheap per-lookup tokens across a long buyer tail.",
+        "inputs": {"competitor_id": "acra_adhoc_profile", "competitor_monthly_sgd": 28},
+        "monthly_sgd_equivalent": 28.0,
+        "confidence": 0.55
+      },
+      "whitespace_segment_ids": ["sg_wholesale_distributor", "sg_fnb_supplier"]
+    },
+    {
+      "id": "procurement_lead",
+      "name": "Mid-Market Procurement & Vendor-Onboarding Lead",
+      "icp": "Procurement or vendor-onboarding lead at a corporate or mid-market firm running supplier due-diligence and registration before a PO is raised.",
+      "pains": [
+        "Onboarding checks cover incorporation and KYC but miss how a vendor TREATS counterparties",
+        "Legal-threat bullying and NDA/IP breach by suppliers surface only after a deal sours",
+        "Sourcing decisions made with no behavioural reputation signal, only price and references",
+        "Hand-picked vendor references are curated and never disclose disputes"
+      ],
+      "current_workaround": "Runs KYC/sanctions screening plus an ACRA extract and requests trade references the vendor itself nominates; legal reviews contracts after issues appear.",
+      "wtp_band_sgd": {"low_anchor": 12, "expected": 20, "upper_stretch": 45},
+      "nba": {
+        "method": "tooling_stack",
+        "summary": "Adds a behavioural-reputation line to an onboarding stack of KYC screening plus company-data lookups.",
+        "inputs": {"tooling_lines": [{"tool": "KYC/screening seat share", "monthly_sgd": 30}, {"tool": "ACRA/company-data lookups", "monthly_sgd": 12}]},
+        "monthly_sgd_equivalent": 42.0,
+        "confidence": 0.45
+      },
+      "whitespace_segment_ids": ["sg_procurement_buyer", "sg_logistics_freight"]
+    },
+    {
+      "id": "trade_assoc_admin",
+      "name": "Trade-Association Watchlist Administrator",
+      "icp": "Administrator or secretariat staff at a trade association or cooperative maintaining a shared members' watchlist of problem counterparties.",
+      "pains": [
+        "Members repeatedly burned by the same bad-faith counterparties with no shared memory",
+        "Watchlist lives in spreadsheets and meeting minutes, impossible to query at point of deal",
+        "No defensible identity-keyed record to share without defamation exposure",
+        "Cannot offer members a tangible data benefit to justify membership renewal"
+      ],
+      "current_workaround": "Circulates an informal blacklist by email and at members' meetings; relies on collective memory and committee word-of-mouth.",
+      "wtp_band_sgd": {"low_anchor": 150, "expected": 400, "upper_stretch": 900},
+      "nba": {
+        "method": "competitor_price",
+        "summary": "Org-level seat replacing a manual watchlist; benchmarked to a credit-bureau-style subscription amortised across the membership.",
+        "inputs": {"competitor_id": "credit_bureau_asia", "competitor_monthly_sgd": 700},
+        "monthly_sgd_equivalent": 700.0,
+        "confidence": 0.4
+      },
+      "whitespace_segment_ids": ["sg_creative_it_agency", "sg_factoring_lender"]
+    }
+  ],
+  "pricing_models": [
+    {
+      "name": "Per-lookup lemon tokens",
+      "rationale": "Matches the spiky, event-driven nature of counterparty checks; ~S$0.03/check and ~S$0.10/comprehensive upload keep the first lookup near-free, undercutting a S$5.50 ACRA pull on a per-event basis and lowering activation friction.",
+      "score_by_persona": {"Specialist-Trade Subcontractor Owner": 5, "SME Credit-Control Manager": 3, "Wholesale / Trade-Credit Distributor": 5, "Mid-Market Procurement & Vendor-Onboarding Lead": 3, "Trade-Association Watchlist Administrator": 2}
+    },
+    {
+      "name": "Flat monthly subscription",
+      "rationale": "Predictable cost for users who check regularly; converts grapevine habit into a budgeted line and smooths revenue, but over-prices the occasional checker.",
+      "score_by_persona": {"Specialist-Trade Subcontractor Owner": 3, "SME Credit-Control Manager": 4, "Wholesale / Trade-Credit Distributor": 3, "Mid-Market Procurement & Vendor-Onboarding Lead": 4, "Trade-Association Watchlist Administrator": 3}
+    },
+    {
+      "name": "Freemium self-check",
+      "rationale": "A business checking its OWN score free (plus free appeals) drives identity claims and data correctness, seeds the graph, and creates a viral know-your-own-score loop; monetisation comes from checking OTHERS.",
+      "score_by_persona": {"Specialist-Trade Subcontractor Owner": 5, "SME Credit-Control Manager": 3, "Wholesale / Trade-Credit Distributor": 4, "Mid-Market Procurement & Vendor-Onboarding Lead": 3, "Trade-Association Watchlist Administrator": 2}
+    },
+    {
+      "name": "Tiered SME plans",
+      "rationale": "Window Shopper / The Stall / The Orchard bundle monthly token allowances with depth features (history, alerts, comprehensive reports); good-better-best anchoring nudges credit teams up from per-token to a plan.",
+      "score_by_persona": {"Specialist-Trade Subcontractor Owner": 4, "SME Credit-Control Manager": 5, "Wholesale / Trade-Credit Distributor": 4, "Mid-Market Procurement & Vendor-Onboarding Lead": 4, "Trade-Association Watchlist Administrator": 3}
+    },
+    {
+      "name": "API / usage onboarding tier",
+      "rationale": "Programmatic lookups for vendor-onboarding and association watchlists priced on volume; embeds Lemon Score in existing procurement and membership systems and unlocks the largest contract values.",
+      "score_by_persona": {"Specialist-Trade Subcontractor Owner": 1, "SME Credit-Control Manager": 3, "Wholesale / Trade-Credit Distributor": 3, "Mid-Market Procurement & Vendor-Onboarding Lead": 5, "Trade-Association Watchlist Administrator": 5}
+    }
+  ],
+  "elasticity_heuristics": [
+    {"segment": "Subcontractor owners (price-sensitive, cashflow-tight)", "elasticity_band": "high", "evidence": "Owner pays out of pocket and already gets word-of-mouth free; even S$10/mo is weighed against a free WhatsApp group, so demand drops sharply above ~S$10."},
+    {"segment": "SME credit-control teams", "elasticity_band": "medium", "evidence": "Already budget S$30-60 for commercial reports; a S$10-20 peer-signal add-on reads as cheap insurance, but it competes for the same vetting line and is dropped if utilisation is low."},
+    {"segment": "Wholesale / distributor long-tail checks", "elasticity_band": "high", "evidence": "Per-buyer value is low so any per-lookup price above a few cents kills coverage of the tail; token model thrives, subscription resisted."},
+    {"segment": "Mid-market procurement", "elasticity_band": "low", "evidence": "Behavioural-reputation data is differentiated with no direct substitute in the onboarding stack; budget is departmental not personal, so a S$20-45/mo seat is rounding error against contract risk."},
+    {"segment": "Trade associations / cooperatives", "elasticity_band": "low", "evidence": "Org-level buyer amortises cost across members and frames it as a renewal benefit; value scales with membership, so a few hundred S$/mo is defensible and sticky."},
+    {"segment": "Self-check / own-score lookups", "elasticity_band": "high", "evidence": "Must stay free; any charge to view your own reputation triggers churn and undermines data-correctness incentives, so elasticity is effectively infinite at zero."}
+  ],
+  "recommended_tiers": [
+    {
+      "name": "Window Shopper",
+      "price_sgd": 0,
+      "target_persona": "Specialist-Trade Subcontractor Owner",
+      "what_in": ["Free check of your own Lemon Score", "Free appeals on your own record", "1-2 free trial lookup tokens", "Basic public summary score on others"],
+      "what_excluded": ["Comprehensive uploaded-evidence reports", "History and trend view", "Watchlist alerts", "Bulk or API access"],
+      "psychological_anchor": "Knowing your own lemon score is free, the same way ACRA gives you your own profile free after a filing.",
+      "effective_price_after_psg": 0
+    },
+    {
+      "name": "The Stall",
+      "price_sgd": 5,
+      "target_persona": "Specialist-Trade Subcontractor Owner",
+      "what_in": ["Monthly token allowance (~150 checks)", "Comprehensive report unlock at 3 tokens each", "Save and re-check counterparties", "Email alert when a saved counterparty's score drops"],
+      "what_excluded": ["Team seats", "API access", "Watchlist export", "Priority dispute review"],
+      "psychological_anchor": "Less than one S$5.50 ACRA profile per month, but you can check a whole trade's worth of counterparties.",
+      "effective_price_after_psg": 5
+    },
+    {
+      "name": "The Orchard",
+      "price_sgd": 15,
+      "target_persona": "SME Credit-Control Manager",
+      "what_in": ["Large monthly token allowance (~600 checks)", "Unlimited comprehensive reports within allowance", "Payment-behaviour history and trend view", "Up to 3 team seats", "New-account watchlist with score-drop alerts"],
+      "what_excluded": ["Programmatic API", "Association-wide shared watchlist", "Custom data exports beyond CSV"],
+      "psychological_anchor": "A third of one S$30-60 commercial credit report per month, but it shows how a company treats its suppliers, not just its bank.",
+      "effective_price_after_psg": 15
+    },
+    {
+      "name": "Grove API & Association",
+      "price_sgd": 600,
+      "target_persona": "Trade-Association Watchlist Administrator",
+      "what_in": ["Programmatic lookup API with volume tokens", "Shared members' or org watchlist", "Bulk UEN screening for vendor onboarding", "Admin seats and role controls", "Defamation-safe identity-keyed records keyed to UEN and ACRA directors"],
+      "what_excluded": ["Per-seat consumer features", "Free-tier branding removal on member portals unless contracted"],
+      "psychological_anchor": "Less than a single mid-tier credit-bureau subscription, amortised across an entire membership instead of one finance desk.",
+      "effective_price_after_psg": 600
+    }
+  ],
+  "grants": [
+    {
+      "name": "PSG (Productivity Solutions Grant) — aspirational",
+      "coverage_pct": 50,
+      "cap_sgd": null,
+      "eligibility": "CONDITIONAL / NOT YET SECURED. Applies only if Lemon Business is accepted as an IMDA/ESG pre-approved PSG solution, which it is not today. No PSG support exists until and unless that listing is granted.",
+      "applies_to_tiers": ["The Stall", "The Orchard"]
+    },
+    {
+      "name": "EDG (Enterprise Development Grant) — possible for association rollout",
+      "coverage_pct": 50,
+      "cap_sgd": null,
+      "eligibility": "ASPIRATIONAL. An EDG project (e.g. an association digitalising a members' watchlist) could in principle defray the Grove API & Association tier, but requires a qualifying scoped project, ESG approval and an appointed consultant. None secured.",
+      "applies_to_tiers": ["Grove API & Association"]
+    },
+    {
+      "name": "SkillsFuture Enterprise Credit (SFEC) — speculative",
+      "coverage_pct": 90,
+      "cap_sgd": 10000,
+      "eligibility": "SPECULATIVE / NOT CONFIRMED. SFEC top-up can only offset out-of-pocket cost on a separately qualifying programme; it does not by itself make Lemon Business fundable and no eligibility has been established.",
+      "applies_to_tiers": ["The Orchard", "Grove API & Association"]
+    }
+  ]
+}
